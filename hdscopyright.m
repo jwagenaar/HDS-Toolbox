@@ -45,13 +45,13 @@ function hdscopyright(varargin)
         %Currently no links, but could change in future.
         if usejava('desktop')
             HDS.displaymessage('-- -- -- -- -- --',2,'\n','');
-            fprintf('HIERARCHICAL DATA STORAGE TOOLBOX v1.0.\n');
-            fprintf('Copyright:  2009-2010 J.B. Wagenaar\n');
+            fprintf('HIERARCHICAL DATA STORAGE TOOLBOX v1.1.\n');
+            fprintf('Copyright:  2009-2012 J.B. Wagenaar\n');
             HDS.displaymessage('-- -- -- -- -- --',2,'','\n');
         else
             HDS.displaymessage('-- -- -- -- -- --',2,'\n','');
-            fprintf('HIERARCHICAL DATA STORAGE TOOLBOX v1.0.\n');
-            fprintf('Copyright:  2009-2010 J.B. Wagenaar\n');
+            fprintf('HIERARCHICAL DATA STORAGE TOOLBOX v1.1.\n');
+            fprintf('Copyright:  2009-2012 J.B. Wagenaar\n');
             HDS.displaymessage('-- -- -- -- -- --',2,'','\n');
         end
 
