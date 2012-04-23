@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding="utf-8"?>
+
+<toc version="2.0">
+    <tocitem target="HDS_top.html"> Hierarchical Data Storage Toolbox
+        <tocitem target="HDS_getStarted.html" image="HelpIcon.GETTING_STARTED">Getting Started
+            <tocitem target="HDS_About.html">About </tocitem>
+            <tocitem target="HDS_Overview.html">Product Overview 
+                <tocitem target="HDS_Overview.html#prodOv1">HDS Toolbox Terminology</tocitem>
+                <tocitem target="HDS_Overview.html#prodOv2">HDS Class Definitions</tocitem>
+                <tocitem target="HDS_Overview.html#prodOv3">HDS Methods</tocitem>
+                <tocitem target="HDS_Overview.html#prodOv4">HDS Subclass Definitions</tocitem>
+                <tocitem target="HDS_Overview.html#prodOv5">HDS Toolbox status indicators</tocitem>
+            </tocitem>
+			<tocitem target="HDS_DevRules.html">Important Information for Developers </tocitem>
+            <tocitem target="HDS_Acknowledgements.html">Acknowledgements</tocitem>
+        </tocitem>
+        
+        <tocitem target="HDS_usrGuidIndex.html" image="HelpIcon.USER_GUIDE">User Guide 
+			<tocitem target="HDS_usrGuide_GenInfo.html" image="$toolbox/matlab/icons/help_ug.png"> General Information 
+				<tocitem target="HDS_usrGuide0.html">Object oriented programming in Matlab </tocitem>
+				<tocitem target="HDS_DevRules.html">Important Information for Developers</tocitem>
+			</tocitem>
+			
+			<tocitem target="HDS_usrGuide_SpecAct.html"> Specific Actions using the Toolbox
+				
+            	<tocitem target="HDS_usrGuide1.html">Creating Class Definitions for the HDS Toolbox
+                	<tocitem target="HDS_usrGuide1.html#sec1">Opening the HDSTemplate class</tocitem>
+                	<tocitem target="HDS_usrGuide1.html#sec2">A closer look at the HDSTemplate class </tocitem>
+            	</tocitem>
+			</tocitem>
+            <!-- ><tocitem target="HDS_usrGuide3.html">Loading and saving data
+                <tocitem target="HDS_usrGuide3.html#sec1">HDS file-structure</tocitem>
+                <tocitem target="HDS_usrGuide3.html#sec2">Loading data</tocitem>
+                <tocitem target="HDS_usrGuide3.html#sec3">Saving data</tocitem>
+                <tocitem target="HDS_usrGuide3.html#sec4">Creating local copiesma</tocitem>
+            </tocitem>
+            <tocitem target="HDS_usrGuide4.html">Dynamic objects/properties
+                <tocitem target="HDS_usrGuide4.html#sec1">Dynamic properties</tocitem>
+                <tocitem target="HDS_usrGuide4.html#sec2">Adding and removing HDS objects</tocitem>
+                <tocitem target="HDS_usrGuide4.html#sec3">Adding and removing properties</tocitem>
+                <tocitem target="HDS_usrGuide4.html#sec4">Transient objects and properties</tocitem>
+            </tocitem>
+            <tocitem target="HDS_usrGuide5.html">Updating class definitions</tocitem>
+            <tocitem target=""></tocitem> -->
+        </tocitem>
+        
+        <tocitem target="HDS_example.html" image="HelpIcon.EXAMPLES">HDS Example 
+            <!-- ><tocitem target="">Tutorial 1 - Defining a basic database</tocitem>
+            <tocitem target="">Tutorial 2 - Using dependent variables</tocitem>
+            <tocitem target="">Tutorial 3 - Updating to changes in the class definition</tocitem> -->
+        </tocitem>
+        
+        <tocreference target="HDS_helpfuncbycat.xml">
+        </tocreference>
+        
+    </tocitem>
+</toc>

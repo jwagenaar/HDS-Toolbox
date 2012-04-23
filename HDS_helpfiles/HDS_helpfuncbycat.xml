@@ -1,0 +1,34 @@
+<toc version="2.0"> 
+    <tocitem target="function_ref.html">Methods 
+        <tocitem target="function_ref.html#info">Object information 
+            <tocitem target="func_getpath.html"><name>getpath</name><purpose>Path where object stored</purpose></tocitem>
+                <tocitem target="func_hds.html"><name>hds</name><purpose>Abstract class definition</purpose></tocitem>
+                <tocitem target="func_HDS.objchanged.html"><name>HDS.objchanged</name><purpose>Indicates object needs saving</purpose></tocitem>   
+                <tocitem target="func_propforclass.html"><name>propforclass</name><purpose>Gets property names with objects</purpose></tocitem>
+                <tocitem target="func_renameprop.html"><name>renameprop</name><purpose>Changes name of property</purpose></tocitem>
+                <tocitem target="func_sortprop.html"><name>sortprop</name><purpose>Sorts objects of property</purpose></tocitem>    
+            </tocitem>
+            <tocitem target="function_ref.html#management">Object management
+                <tocitem target="func_addlink.html"><name>addlink</name><purpose>Adds link to other objects</purpose></tocitem>
+                <tocitem target="func_addobj.html"><name>addobj</name><purpose>Adds HDS object to object</purpose></tocitem> 
+                <tocitem target="func_addprop.html"><name>addprop</name><purpose>Add property to object</purpose></tocitem> 
+                <tocitem target="func_hdsdefrag.html"><name>hdsdefrag</name><purpose>Minimizes disk-space</purpose></tocitem>
+                <tocitem target="func_hdsupdateobj.html"><name>hdsupdateobj</name><purpose>Updates objects for version change</purpose></tocitem>
+                <tocitem target="func_remlink.html"><name>remlink</name><purpose>Removes links from object</purpose></tocitem>
+                <tocitem target="func_remobj.html"><name>remobj</name><purpose>Remove HDS object from object</purpose></tocitem> 
+                <tocitem target="func_remprop.html"><name>remprop</name><purpose>Remove property from object</purpose></tocitem> 
+            </tocitem>
+            <tocitem target="function_ref.html#actions">Object actions
+                <tocitem target="func_close.html"><name>close</name><purpose>Remove object from memory</purpose></tocitem>
+                <tocitem target="func_hdsexport.html"><name>hdsexport</name><purpose>Copies part of database</purpose></tocitem>
+                <tocitem target="func_hdsupdate.html"><name>hdsupdate</name><purpose>Updates search lookup tables</purpose></tocitem>
+                <tocitem target="func_revertobj.html"><name>revertobj</name><purpose>Reverts object back to disk version</purpose></tocitem>
+                <tocitem target="func_save.html"><name>save</name><purpose>Save object</purpose></tocitem> 
+                <tocitem target="func_updateobj.html"><name>updateobj</name><purpose>Updates objects during load</purpose></tocitem>
+            </tocitem>            
+        </tocitem> 
+</toc>
+                         
+                               
+                       
+                

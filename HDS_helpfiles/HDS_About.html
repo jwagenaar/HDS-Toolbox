@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>About (Hierarchical Data Storage Toolbox)</title>
+
+    <style type="text/css">    
+      p {margin-top:0ex;}
+
+      /* Footer monospace */
+      tt.minicdot {font-size: 1.6ex; }
+      table.nav  {background-color: #E7EBF7; }
+
+      ul li p {margin-top:0ex; margin-bottom:.5ex; padding:0}
+
+      p.copy 	{ margin:0; padding:2px; background-color:#FFFFFF; }
+                div.expander dd {margin-top:-1ex; margin-left:3ex;}
+                table {border-width:0;}
+    </style>
+  </head>
+
+<body>
+    <a name="top_of_page"></a>
+    <p style="font-size:1px;">&nbsp;</p>
+
+    <h1 class="title">About the Hierarchical Data Storage Toolbox</h1>
+    
+    <hr>
+
+    <p></p>
+    <p>The HDS-Toolbox (or: Just another Object Oriented Storage Toolbox)  is developed to provide a means to access large amounts of 'scientific' data in a structured and intuitive way. It aims at creating self documenting datasets that can easily be interpreted by the user and it formalizes an environment for managing methods tailored to the specific datasets. It provides a transparent alternative for people that currently store their scientific data in matlab-structures and offers many additional benefits which will be described in the remainder of this document.</p>
+    
+	<p>The toolbox does this by requiring the user to define their data as a set of linked classes which are hierarchically organized. Objects of these classes can be linked to each-other based on the relations defined in the class definitions. The class definitions separate 'meta-data' from 'raw-data' and assigns dimensions and units to data represented in the objects. </p>
+
+	<p>Representing data in objects has multiple advantages. First, the user is required to define a class definition for each data type. This standardizes the data sets and enforces clear descriptions of the contents of a data set. Second, classes can have associated methods which means that specific analysis method can be written for objects of a certain class. These methods are all stored with the class definition and are therefore easily managed. In addition, it is easy to list all methods that can be invoked for a certain data class. In general, using an object oriented structure for scientific data will enforce a more structured approach to defining data and methods.</p>
+
+    <p> Accessing data with the HDS Toolbox is as easy as indexing a Matlab structure. By altering the way that MATLAB accesses data in properties, the HDS Toolbox can load data from disk at the time the property is accessed. Once the data is loaded from disk, the data remains in memory until the user clears the memory. In addition, the data in the objects is stored separately from the meta-data which enables very fast browsing of objects with a very limited memory load. </p>  
+    
+    <p> In summary, the HDS Toolbox provides a solution for scientists who analyze and store scientific data with Matlab. It enables the user to categorize and structure their data in a manner that enforces uniformity and 'readability' . It also enables the user to access all the data through a highly intuitive way while keeping memory requirements to a minimum.</p>
+
+    <p></p>
+
+    <table class="nav" border="0" width="100%" cellpadding="0" cellspacing="0">
+      <tr valign="middle">
+	 <td align="left" width="25">
+	  <a href="HDS_getStarted.html"><img src="b_prev.gif" alt="Acknowledgment" border="0" vspace="0" width="17px" align="top"></a>&nbsp;</td>
+	<td align="left">Getting Started</td>
+	<td>&nbsp;</td>
+	<td align="right">Product Overview</td>
+	<td align="right" width="25">
+	  <a href="HDS_Overview.html"><img src="b_next.gif" border="0" align="bottom" alt="Product Overview"></a></td>
+      </tr>
+    </table>
+    
+    <br>
+
+  <table bgcolor="#336699" width="100%">
+    <tr><td height="1" bgcolor="#336699"><img src="pixelclear.gif" width="1" height="1" alt=''></td></tr>
+  </table>
+
+  <p class="copy">&copy; 2009-2011 J.B.M. Wagenaar
+    <tt>&#8226;</tt> <a href="file:../../../license.txt">Terms of Use</a> 
+    <tt>&#8226;</tt> <a href="file:../../../help/acknowledgments.html">Acknowledgments</a>
+  </p>
+
+  </body>
+
+</html>

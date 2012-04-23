@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Information for Developers (Hierarchical Data Storage Toolbox)</title>
+
+  <link rel="stylesheet" href="docstyle.css" type="text/css">
+
+</head>
+
+<body>
+    <a name="top_of_page"></a>
+    <p style="font-size:1px;">&nbsp;</p>
+
+    <h1 class="title">Important Information for Developers</h1>
+  
+	<hr>
+
+	<table border="0" cellpadding="4" cellspacing="0" class="pagenavtable">
+		<tr><th>On this page&#8230;</th></tr>
+		<tr><td>
+			<p><a href="HDS_DevRules.html#dev1">Using GETPROP and SETPROP in class methods</a></p>
+			<p><a href="HDS_DevRules.html#dev2">Requesting properties in multiple objects</a></p>
+			</td>
+		</tr>
+    </table>
+
+    <br>
+
+
+	<p>
+		Although the HDS Toolbox is developed to minimize unintuitive syntax, there are a couple of situations in which the behavior of the database is different than one might expect. These issues are rooted in some limitations that MATLAB imposes on object oriented programming. It is important that anybody developing and using the HDS Toolbox understands the following issues as they affect the treatment of data in the database. 
+	</p>
+	
+	<br>
+	
+	<a name="dev1"></a><h3 class="title" id="dev1">Using GETPROP and SETPROP in class methods</h3>
+		<p>The main functionality of the HDS Toolbox is based on changing the way that properties are accessed during reading and writing from/to the object. This is realized by overloading the SUBSREF and SUBSASGN methods for all objects of class HDS. These methods automatically get called when you access a property in an object (i.e.  Object1.property ). For some reason, MATLAB decided that this behavior should be ignored in class methods. In class methods, accessing properties using this syntax will utilize MATLAB's internal methods. This will result in unwanted behavior of the HDS Toolbox without throwing a noticeable error.</p>
+		
+		<p>To force MATLAB to use the overloaded methods for accessing data, one should explicitly use the SUBSREF and SUBSASGN methods in class methods. Information on how to use these methods can be found in the MATLAB manual. The HDS Toolbox has two method implemented which simplify this situation. If you are getting or setting a property in the current object, you can use the GETPROP and SETPROP methods instead of the SUBSREF and SUBSASGN methods. Below shows how the three indexing methods relate, note that the first method ('.'-method) should not be used in class methods: </p>
+		
+		<p class="code"><img src="images/GetPropEx.png" width="477" height="433" alt="GetPropEx"></p>
+	
+		<p>This example is similar using the different methods for setting object properties as shown by the following example: </p>
+		<p class="code"><img src="images/SetPropEx.png" width="491" height="566" alt="SetPropEx"></p>
+		
+	
+    <a name="dev2"></a><h3 class="title" id="dev2">Requesting properties in multiple objects</h3>
+	
+		<p>The HDS Toolbox aims to mimic the behavior of the standard MATLAB structures from a user point of view. Due to restrictions imposed by MATLAB, it is not possible to return more outputs than the number of inputs when accessing objects. This is reflected when the user tries to access a property from an array of objects located in a certain property of an object. Instead, the HDS Toolbox will return a single cell array with the contents for each object in a single cell. However, direct accessing multiple properties in an array of objects works as expected.   </p>
+		<p class="code"><img src="images/MultipleIndex.png" width="481" height="396" alt="MultipleIndex"></p>
+		
+		<p>In summary, indexing property values in an array of objects behaves exactly the same as in structures as long as the array is directly accessed. When the array is accessed as being a property of a parent object, the HDS toolbox will always return the values embedded in a cell-array. MATLAB knows about this problem and a better solution is submitted as a feature request.</p>
+		
+	
+    <p><br></p>
+
+    <table class="nav" border="0" width="100%" cellpadding="0" cellspacing="0">
+      <tr valign="middle">
+	 <td align="left" width="25">
+	  <a href="HDS_Overview.html"><img src="b_prev.gif" alt="Acknowledgment" border="0" vspace="0" width="17px" align="top"></a>&nbsp;</td>
+	<td align="left">Product Overview</td>
+	<td>&nbsp;</td>
+	<td align="right">Acknowledgements</td>
+	<td align="right" width="25">
+	  <a href="HDS_Acknowledgements.html"><img src="b_next.gif" border="0" align="bottom" alt="Acknowledgements"></a></td>
+      </tr>
+    </table>
+    
+    <br>
+
+  <table bgcolor="#336699" width="100%">
+    <tr><td height="1" bgcolor="#336699"><img src="pixelclear.gif" width="1" height="1" alt=''></td></tr>
+  </table>
+
+  <p class="copy">&copy; 2009-2011 J.B.M. Wagenaar
+    <tt>&#8226;</tt> <a href="file:../../../license.txt">Terms of Use</a> 
+    <tt>&#8226;</tt> <a href="file:../../../help/acknowledgments.html">Acknowledgments</a>
+  </p>
+
+  </body>
+
+</html>

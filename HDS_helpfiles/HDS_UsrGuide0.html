@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Object Oriented Programming</title>
+
+    <style type="text/css">    
+      p {margin-top:0ex;}
+
+      /* Footer monospace */
+      tt.minicdot {font-size: 1.6ex; }
+      table.nav  {background-color: #E7EBF7; }
+
+      ul li p {margin-top:0ex; margin-bottom:.5ex; padding:0}
+
+      table.table1 {margin-left:5ex;}
+      p.code {margin-left:3ex;}
+
+      p.copy 	{ margin:0; padding:2px; background-color:#FFFFFF; }
+                div.expander dd {margin-top:-1ex; margin-left:3ex;}
+                table {border-width:0;}
+
+      h3.title {color:#990000; margin-top:1ex; margin-bottom:.9ex; font-weight:bold; font-size:2.5ex}
+      
+      /* For tables of links appearing below the 'sect1', i.e. h2, heading at the top of each page */
+      /* Based on datatable5 style from site4.css, used on the support main page */
+      .pagenavtable th { background-color:#D7D7D7; border-bottom: 1px solid #878787; color:#000000; font-weight:bold; text-align:left; }
+      .pagenavtable { border:1px solid #878787; margin-top:1.7ex; margin-bottom:.5ex; }
+      .pagenavtable td { text-align:left; vertical-align:top;  padding:4px; }
+      .pagenavtable td p{ line-height:1em; margin-top:0.7ex; margin-bottom:0.7ex;}
+      p.pagenavlink { margin-top:2.2ex; margin-bottom:0; padding-top:0; padding-bottom:0; }
+      a.pagenavimglink { text-decoration:none; }
+
+    </style>
+  </head>
+
+<body>
+    <a name="top_of_page"></a>
+    <p style="font-size:1px;">&nbsp;</p>
+    <h1 class="title">Class definitions in Matlab</h1>
+    
+    <hr>
+
+    
+    <br>
+ 
+    <p>For a thorough explanation of classes and other Object Oriented programming, see Matlab's help files. In this section, only some of the basics are covered to understand the basic functionality necessary for using the HDS Toolbox. </p>
+    
+    <p>Object Oriented programming handles data in the form of objects where each object has certain properties and methods. When we, for example, define an object named: "Car", we can give it certain properties such as: "Color", "Transmission type" and "Fuel type". Methods we can assign are: "Washing", "Driving" and unfortunately "towing"... </p><p>Class definitions are files that Matlab uses to define objects using exactly the same definitions: properties and methods. It is possible to have one object be a specific kind of another object (ie. "Electric cars" are a special type of "Cars") with additional properties ("Battery type", "Charge Time") and methods ("Charging"). Similarly, Matlab classes can be a subclass of another Matlab class and when we define a custom HDS class to store data, we make it a subclass of the HDS_main class.</p>
+
+    <p>In Matlab, class definitions are stored in folders on the Matlab path. Each class definition should be stored in a folder with the same name as the name of the object preset with an" @"-symbol. The filename of the class definition should also be the same as the object name. So, if we want to define an object with the name "Car", the class definition file should be:</p><p class="code"><tt>.../SomeFolder/@Car/Car.m</tt></p><p>where "SomeFolder" should be on the Matlab path.</p>
+
+    
+
+   
+
+   <br><br>
+
+   <table class="nav" border="0" width="100%" cellpadding="0" cellspacing="0">
+     <tr valign="middle">
+       <td align="left" width="25">
+	 <a href="HDS_About.html"><img src="b_prev.gif" alt="About" border="0" vspace="0" width="17px" align="top"></a>&nbsp;</td>
+       <td align="left">About the HDS-Toolbox</td>
+       <td>&nbsp;</td>
+       <td align="right">Example 1</td>
+       <td align="right" width="25">
+	 <a href="HDS_Overview.html"><img src="b_next.gif" border="0" align="bottom" alt="Product Overview"></a></td>
+     </tr>
+   </table>
+    
+   <br>
+
+
+   <table bgcolor="#336699" width="100%">
+    <tr><td height="1" bgcolor="#336699"><img src="pixelclear.gif" width="1" height="1" alt=''></td></tr>
+  </table>
+
+  <p class="copy">&copy; 2009-2010 J.B.M. Wagenaar
+    <tt>&#8226;</tt> <a href="file:../../../license.txt">Terms of Use</a> 
+    <tt>&#8226;</tt> <a href="file:../../../help/acknowledgments.html">Acknowledgments</a>
+  </p>
+
+  </body>
+
+</html>

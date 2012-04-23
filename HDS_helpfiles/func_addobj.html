@@ -1,0 +1,122 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+
+<html lang="en">
+
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  
+	<title>addobj :: Functions (Hierarchical Data Storage Toolbox&#8482;)</title><link rel="stylesheet" href="docstyle.css" type="text/css"><meta 	name="generator" content="DocBook XSL Stylesheets V1.52.2"><meta name="chunktype" content="refpage">
+  
+	<meta http-equiv="Content-Script-Type" content="text/javascript"><meta name="toctype" content="fcn"><script language="JavaScript" 	src="docscripts.js"></script>
+
+<style>
+h1 {
+  color: #990000; 
+  font-size: 25;
+}
+
+</style></head>
+
+<body>
+
+<a name="top_of_page"></a>
+<p style="font-size:1px;">&nbsp;</p>
+<a name="f5-20226"></a>
+<a class="indexterm" name="zmw57dd0e14388"></a>
+<a class="indexterm" name="zmw57dd0e14392"></a>
+<a class="indexterm" name="zmw57dd0e14397"></a>
+
+<h1 class="reftitle">addobj</h1>
+
+<p class="purpose">Adds objects to the current object</p>
+
+<h2>Syntax</h2>
+
+<p class="synopsis"><tt>OBJ = ADDOBJ(OBJ, 'class')
+<br>OBJ = ADDOBJ(OBJ, 'class', NR)
+<br>OBJ = ADDOBJ(OBJ, 'class', 'propName')
+<br>OBJ = ADDOBJ(OBJ, 'class', 'propName', NR)
+<br>OBJ = ADDOBJ(... , CONSTRUCTOR)
+</tt></p><a name="bse7fcb-1"></a>
+
+
+<h2>Description</h2>
+
+       <p><tt>OBJ = ADDOBJ(OBJ, 'class')</tt> will add one object to the current object.
+       'class' is a string indicating the class name of the desired object. The
+       added object will be generated without any additional constructor
+       arguments and will be added to the default property as defined in the
+       <tt>LISTAS</tt> property of the added object.
+      
+       <p><tt>OBJ = ADDOBJ(OBJ, 'class', NR)</tt> will add N objects to the current object.
+       The added object will be generated without any additional constructor
+       arguments and will be added to the default property as defined in the
+       <tt>LISTAS</tt> property of the added object.
+      
+       <p><tt>OBJ = ADDOBJ(OBJ, 'class', 'propName')</tt> will add one object to the current
+       object. 'propName' is a string indicating the property to which the object
+       will be added.
+      
+       <p><tt>OBJ = ADDOBJ(OBJ, 'class', 'propName', NR)</tt> Will add <tt>N</tt> objects to the current
+       object. The added object will be generated without any additional
+       constructor arguments and will be added to the property <tt>PROP</tt>.
+      
+       <p><tt>OBJ = ADDOBJ(... , CONSTRUCTOR)</tt> In all cases, a cell-array can be
+       specified as the last argument defining additional inputs to the
+       class constructor of the added objects. In this case, the number of
+       rows in the cell-array will be used to determine the number of
+       objects that should be added. In case the number of objects is
+       explicitely specified by <tt>NR</tt>, the cell-array should be one-dimensional
+       and will be applied as a constructor argument for each object.
+ 
+
+<a name="bse7fs0-1"></a>
+     
+
+<h3>Examples</h3>       
+
+      
+           <p><tt>E = Experiment; addobj(E,'Trial', {'Trial01' ; 'Trial02'})</tt>
+      
+           <p><tt>T = Trial; addobj(T,'KinData','kindata',4,{'name' argument2 argument3})</tt>
+      
+           <p><tt>K = KinData; addobj(K,'Marker','mrk', {'Hip' MarkerArray});</tt>          
+   
+   
+
+<h3>Technical specs</h3>
+
+     <p>1. <tt>ADDOBJ</tt> can only be called on a single object. 
+     
+     <p>2. <tt>ADDOBJ</tt> registers the object if the object has not been registered
+     before.  
+    
+     <p>3. <tt>ADDOBJ</tt> creates dummy object and checks if object can be added.
+    
+     <p>4. <tt>ADDOBJ</tt> evaluats input arguments and checks if the suggested property
+     name is okay.
+    
+     <p>5. <tt>ADDOBJ</tt> creates new objects and sets the objIds in each object.
+    
+     <p>6. <tt>ADDOBJ</tt> determines the locId and registers the new objects.
+    
+     <p>7. <tt>ADDOBJ</tt> sets the property to be a childprop in the parent obj.
+    
+     <p>8. <tt>ADDOBJ</tt> adds the objIds of the new objects to the childIds in the
+     parent.
+    
+     <p>9. <tt>ADDOBJ</tt> calls the objChanged method on the parent object.
+
+<table class="feedbacklinkbot" border="0" width="100%" cellpadding="0" cellspacing="0"><tr><td>&nbsp;</td><td align="right"><script type="text/javascript" language="JavaScript">
+writeDocFeedbackSurveyLink();
+</script>&nbsp;
+</td></tr></table><p></p><table class="nav" summary="Navigation aid" border="0" width="100%" cellpadding="0" cellspacing="0"><tr valign="top"><td>&nbsp;</td></tr></table><br>
+
+  <p class="copy">&copy; 1984-2010 The MathWorks, Inc.
+       <tt class="minicdot">&#149;</tt> <a href="file:../../../license.txt">Terms of Use</a> <tt class="minicdot">&#149;</tt> <a href="file:../../../patents.txt">Patents</a> <tt class="minicdot">&#149;</tt> <a href="file:../../../trademarks.txt">Trademarks</a> <tt class="minicdot">&#149;</tt> <a href="file:../../../help/acknowledgments.html">Acknowledgments</a></p>
+
+</body>
+
+</html>

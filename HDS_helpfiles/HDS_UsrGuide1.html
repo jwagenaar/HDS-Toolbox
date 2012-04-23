@@ -1,0 +1,213 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <!--><title>Creating Class Definitions for the HDS Toolbox</title> -->
+
+    <style type="text/css">    
+      p {margin-top:0ex;}
+
+      /* Footer monospace */
+      tt.minicdot {font-size: 1.6ex; }
+      table.nav  {background-color: #E7EBF7; }
+
+      ul li p {margin-top:0ex; margin-bottom:.5ex; padding:0}
+
+      p.code img  {margin:0px; border:1px solid #AAAAA;}
+
+      table.table1 {margin-left:5ex;}
+      p.code {margin-left:3ex;}
+
+      p.copy 	{ margin:0; padding:2px; background-color:#FFFFFF; }
+                div.expander dd {margin-top:-1ex; margin-left:3ex;}
+                table {border-width:0;}
+
+      h3.title {color:#990000; margin-top:1ex; margin-bottom:.9ex; font-weight:bold; font-size:2.5ex}
+      
+      /* For tables of links appearing below the 'sect1', i.e. h2, heading at the top of each page */
+      /* Based on datatable5 style from site4.css, used on the support main page */
+      .pagenavtable th { background-color:#D7D7D7; border-bottom: 1px solid #878787; color:#000000; font-weight:bold; text-align:left; }
+      .pagenavtable { border:1px solid #878787; margin-top:1.7ex; margin-bottom:.5ex; }
+      .pagenavtable td { text-align:left; vertical-align:top;  padding:4px; }
+      .pagenavtable td p{ line-height:1em; margin-top:0.7ex; margin-bottom:0.7ex;}
+      p.pagenavlink { margin-top:2.2ex; margin-bottom:0; padding-top:0; padding-bottom:0; }
+      a.pagenavimglink { text-decoration:none; }
+
+    </style>
+  </head>
+
+<body>
+    <a name="top_of_page"></a>
+    <p style="font-size:1px;">&nbsp;</p>
+    <h1 class="title">Creating Class Definitions for the HDS Toolbox</h1>
+    
+    <hr>
+
+    <table border="0" cellpadding="4" cellspacing="0" class="pagenavtable">
+      <tr>
+	<th>On this page&#8230;</th></tr>
+      <tr><td>
+	  <p><a href="HDS_UsrGuide1.html#sec1">Opening the HDSTemplate Class</a></p>
+	  <p><a href="HDS_UsrGuide1.html#sec2">A closer look at the HDSTemplate Class</a></p>
+	<p><a href="HDS_UsrGuide1.html#sec2">Summary</a></p>
+      </td></tr>
+    </table>
+
+    <br>
+    
+    <a name="sec1"></a><h3 class="title" id="sec1">Opening the HDS class Template</h3>
+    
+    <p> The HDS Toolbox provides a template which can be used as a starting point for a custom class definition file. This template can be found in the HDS Toolbox folder:</p><p class="code"><tt>HDS Toolbox/@HDSTemplate/HDSTemplate.m</tt></p><p>and can be opened by calling the class definition from the Matlab command line:</p><p class="code"><tt>>> edit HDSTemplate </tt></p>
+
+	<p>The HDSTemplate class definition can be used as a template for other user specified class definitions. It meets all requirements for correctly defining a subclass of the HDS Toolbox. </p>
+
+    <a name="sec2"></a><h3 class="title" id="sec2">A closer look at the HDS_Template class</h3>
+    <p>In this section, we will go over the specifics in the "HDS_Template". Let's start with the class definition declaration on the first line:<br><br></p>
+    <h4 class="title">Class Definition</h4>
+
+	<p class="code"><img src="images/HDSTemplate_1.png" width="600" height="36" alt="Class Header"></p>
+
+    <p>This defines the a class definition with name "HDSTemplate". We can also see that the "HDSTemplate" class is a subclass of the "HDS" class.
+	The first commented line is called the H1 line and summarizes the class definition. This line has a similar function as the H1 line in other methods/functions and is displayed when the METHODS function is used.</p>
+	
+	<p>Any commented lines following the H1 line are used to describe the class and are displayed when the HELP function is used on objects of this class. This is exactly similar for function declarations.<br><br></p>
+    <h4 class="title">Specific properties of the subclass</h4>
+    <p class="code"><img src="images/HDSTemplate_2.png" width="600" height="82" alt="HDSTemplate 2"></p>
+    <p> Specific properties are, as the name implies, specific to the custom class definition and can be whatever you want them to be. The commented text following the property name can be used to describe the constants of the property and will be shown with the PROPERTIES methods.</p>
+
+	<p>Properties can have different attributes like "Hidden", "Transient" and "Dependent". See the Matlab help for a complete description of these attributes. It is recommended that you do not use the "Private" attribute as this can result in problems when a class definition is updated in some rare occasions.</p>
+
+	<p>Properties defined as "meta-data" in the constants (see below), are required have the class-type of the contents defined in the class definition. For example, meta1 = '', meta1 = {}, meta1 = false or meta1 = []. Uninitialized properties are assumed to be numeric. This is required in order to correctly populate the search tables for queries.</p>
+
+	<p class="code"><img src="images/HDSTemplate_3.png" width="600" height="49" alt="HDSTemplate 3"></p>
+    
+	<p>Properties defined as "data" (see below), are required to have the "Transient" attribute. This is necessary because the HDS Toolbox saves the contents of these properties in a separate file for improve data management efficiency. <br><br></p>
+
+    <h4 class="title">Required Properties of the subclass</h4>
+
+    <p class="code"><img src="images/HDSTemplate_4.png" width="600" height="171" alt="HDSTemplate 4"></p>
+    <p>Next are the required properties, these properties are required to be specified by the HDS_Main class definition and provide the HDS Toolbox with the necessary information about how objects of the class should be treated:</p>
+
+   <br>
+   <table width="600" border="0" cellspacing="0" cellpadding="1" bgcolor="#D7D7D7" style="margin-left:20px;">
+        <tr> 
+          <td> 
+            <table width="100%" border="0" cellspacing="1" cellpadding="2" bgcolor="#D7D7D7">
+              <tr> 
+                <th bgcolor="#C7C7C7" width="30%" align="left">Constants</th>
+                <th bgcolor="#C7C7C7" width="70%" align="left">Description</th>
+              </tr>
+             
+	      <tr> 
+                <td bgcolor="#FFFFFF" valign="top" width="30%"> <p align="left"><b>listAs</b></p></td>
+                <td bgcolor="#FFFFFF" width="70%" valign="top"> <p>String indicating the default property name to which the object is added in the parent object. This can be overridden by the ADDOBJ method if another property name is supplied.</p></td>
+              </tr>
+	      
+	      <tr> 
+		<td bgcolor="#FFFFFF" valign="top" width="20%"> <p align="left"><b>classVersion</b></p></td>
+                <td bgcolor="#FFFFFF" width="80%" valign="top"> <p>Version Number of this class definition. Version number should be increased when the class is changed in a way that previously saved objects are not loaded correctly anymore. See the topic on updating class definitions for more info.</p></td>
+              </tr>
+
+	      <tr> 
+		<td bgcolor="#FFFFFF" valign="top" width="20%"> <p align="left"><b>childClasses</b></p></td>
+                <td bgcolor="#FFFFFF" width="80%" valign="top"> <p>This should be a cell array of strings matching the Class names of objects that can be defined as children of this class. Objects of these classes can be added to the current class using the ADDOBJ method.</p></td>
+              </tr>
+	      
+	      <tr> 
+		<td bgcolor="#FFFFFF" valign="top" width="20%"> <p align="left"><b>parentClasses</b></p></td>
+                <td bgcolor="#FFFFFF" width="80%" valign="top"> <p>This should be a cell array of strings matching the Class names of objects that can be defined as parents of this class. This and the 'childclasses' constant determine the hierarchy of the database.</p></td>
+              </tr>
+	      
+	      <tr> 
+		<td bgcolor="#FFFFFF" valign="top" width="20%"> <p align="left"><b>metaProps</b></p></td>
+                <td bgcolor="#FFFFFF" width="80%" valign="top"> <p>This is a cell array of strings indicating the properties that are considered meta-data. Meta-data properties can be used in queries using the FINDOBJ method.</p></td>
+              </tr>
+	      <tr> 
+		<td bgcolor="#FFFFFF" valign="top" width="20%"> <p align="left"><b>dataProps</b></p></td>
+                <td bgcolor="#FFFFFF" width="80%" valign="top"> <p>This is a cell array of strings indicating the properties that contain 'raw' data. The contents of these properties are stored in separate files to maximize efficiency and minimize memory load. The properties listed in this method should be defined as 'Transient' in the class definition.</p></td>
+              </tr>
+	      <tr> 
+		<td bgcolor="#FFFFFF" valign="top" width="20%"> <p align="left"><b>propsWithUnits</b></p></td>
+                <td bgcolor="#FFFFFF" width="80%" valign="top"> <p>This is a cell array of strings indicating which properties have associated units. The units and dimension labels for those properties are defined in the next two constants.</p></td>
+              </tr>
+			<tr> 
+			<td bgcolor="#FFFFFF" valign="top" width="20%"> <p align="left"><b>propUnits</b></p></td>
+	                <td bgcolor="#FFFFFF" width="80%" valign="top"> <p>A cell array of strings indicating the units for each of the properties listed in the previous constant. These units will be displayed inline with the contents of the property.</p></td>
+	              </tr>
+				<tr> 
+				<td bgcolor="#FFFFFF" valign="top" width="20%"> <p align="left"><b>propDims</b></p></td>
+		                <td bgcolor="#FFFFFF" width="80%" valign="top"> <p>A cell array containing labels for each of the dimensions of the properties listed in the 'propsWithUnits' constant. Each index can either contain a string with a label when the contents of the property has one dimension, or a cell array with strings when the contents of the property contain multiple dimensions.</p></td>
+		              </tr>
+					<tr> 
+					<td bgcolor="#FFFFFF" valign="top" width="20%"> <p align="left"><b>strIndexProp</b></p></td>
+			                <td bgcolor="#FFFFFF" width="80%" valign="top"> <p>The name of a property of which the contents can be used to index into an array of objects. The specified property can only contain values of the class 'char'. </p></td>
+			              </tr>
+            </table>
+          </td>
+        </tr>
+
+      </table>
+   <br>
+   <br>
+   <h4 class="title">Optional Methods</h4>
+	<p>Methods for the subclass can be defined in the class definition file, or as separate files located in the class definition folder.</p>
+   <p class="code"><img src="images/HDSTemplate_5.png" width="600" height="214" alt="HDSTemplate 5"></p>
+    The HDS Toolbox has one specialized method that can be used to interact with the toolbox to update the objects after changes to the class definitions. For more information on updating objects, see the "Updating Objects" section of the HDS Toolbox documentation.
+
+   <br><br>
+   <table width="600" border="0" cellspacing="0" cellpadding="1" bgcolor="#D7D7D7" style="margin-left:20px;">
+        <tr> 
+          <td> 
+            <table width="100%" border="0" cellspacing="1" cellpadding="2" bgcolor="#D7D7D7">
+              <tr> 
+                <th bgcolor="#C7C7C7" width="30%" align="left">Methods</th>
+                <th bgcolor="#C7C7C7" width="70%" align="left">Description</th>
+              </tr>
+	      <tr>
+		<td bgcolor="#FFFFFF" valign="top" width="20%"> <p align="left"><b>updateobj</b></p></td>
+		<td bgcolor="#FFFFFF" width="80%" valign="top"> <p>Updates the object in case the file that is loaded contains an object that has an older version number than the current class version number. In this case the HDS Toolbox will call this function directly after loading the object and changes can be made as needed. The UPDATEOBJ method in the HDSTemplate class shows some example syntax that can be used to update the object.</p></td>
+	      </tr>
+
+             </table>
+	  </td>
+	</tr>
+   </table> 
+   
+    <br>
+   <a name="sec3"></a><h3 class="title" id="sec3">Summary</h3>
+   <p>The HDS_Template file can be used as a template for creating custom HDS class definitions. Custom class definitions are in no way limited to this layout, i.e. it is very possible to define multiple "property" sections with different attributes. The Template does provide you with the minimal set of properties necessary for correct implementation of an HDS object. Check this by creating an HDS_Template object in Matlab.</p>
+
+<p class="code"><tt>>> TestObj = HDSTemplate </tt></p>
+
+<p> For further information, see the extensive Matlab help sections on Object Oriented programming.</p>
+
+
+<br><br>
+   <table class="nav" border="0" width="100%" cellpadding="0" cellspacing="0">
+     <tr valign="middle">
+       <td align="left" width="25">
+	 <a href="HDS_UsrGuide0.html"><img src="b_prev.gif" alt="ClassDef" border="0" vspace="0" width="17px" align="top"></a>&nbsp;</td>
+       <td align="left">Class definitions in Matlab</td>
+       <td>&nbsp;</td>
+       <td align="right">Example 1</td>
+       <td align="right" width="25">
+	 <a href="HDS_Overview.html"><img src="b_next.gif" border="0" align="bottom" alt="Product Overview"></a></td>
+     </tr>
+   </table>
+    
+   <br>
+
+
+   <table bgcolor="#336699" width="100%">
+    <tr><td height="1" bgcolor="#336699"><img src="pixelclear.gif" width="1" height="1" alt=''></td></tr>
+  </table>
+
+  <p class="copy">&copy; 2009-2010 J.B.M. Wagenaar
+    <tt>&#8226;</tt> <a href="file:../../../license.txt">Terms of Use</a> 
+    <tt>&#8226;</tt> <a href="file:../../../help/acknowledgments.html">Acknowledgments</a>
+  </p>
+
+  </body>
+
+</html>

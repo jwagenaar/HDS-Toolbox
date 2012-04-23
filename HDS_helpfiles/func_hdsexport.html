@@ -1,0 +1,137 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+
+<html lang="en">
+
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  
+	<title>hdsexport :: Functions (Hierarchical Data Storage Toolbox&#8482;)</title><link rel="stylesheet" href="docstyle.css" type="text/css"><meta 	name="generator" content="DocBook XSL Stylesheets V1.52.2"><meta name="chunktype" content="refpage">
+  
+	<meta http-equiv="Content-Script-Type" content="text/javascript"><meta name="toctype" content="fcn"><script language="JavaScript" 	src="docscripts.js"></script>
+
+<style>
+h1 {
+  color: #990000; 
+  font-size: 25;
+}
+
+</style></head>
+
+<body>
+
+<a name="top_of_page"></a>
+<p style="font-size:1px;">&nbsp;</p>
+<a name="f5-20226"></a>
+<a class="indexterm" name="zmw57dd0e14388"></a>
+<a class="indexterm" name="zmw57dd0e14392"></a>
+<a class="indexterm" name="zmw57dd0e14397"></a>
+
+<h1 class="reftitle">hdsexport</h1><!-- SYNCHTO: f4-6010.html -->
+
+<p class="purpose">Copies part of the database to another location</p>
+
+<h2>Syntax</h2>
+
+<p class="synopsis"><tt>HDSEXPORT(OBJ)
+<br>HDSEXPORT(OBJ, 'full')
+<br>HDSEXPORT(OBJ, 'add')
+<br>HDSEXPORT(OBJ, 'part')
+<br>HDSEXPORT(OBJ, OPTION, 'className', 'className', ...)
+<br>HDSEXPORT(OBJ, OPTION, 'className', INDECES, 'className', ...)
+</tt></p><a name="bse7fcb-1"></a>
+
+
+
+<h2>Description</h2>
+   
+ 
+       <p><tt>HDSEXPORT(OBJ)</tt> Copies object OBJ and all the objects linked as
+       children in OBJ to a location specified by the user. It also
+       exports all the parent object and all objects up to the host
+       object.In other words, this will make a copy all objects from the
+       host object to the OBJ object and copy all branches below the OBJ
+       object.
+    
+       <p><tt>HDSEXPORT(OBJ, 'full')</tt> The second input argument defines how the
+       export should behave. When 'full' the method includes parents of
+       OBJ in the exported files. This is the default value, and this will
+       result the same as when the option is omitted.
+    
+       <p><tt>HDSEXPORT(OBJ, 'add')</tt> This will add another branch to a previously
+       exported folder structure. Adding branches can only be used with
+       files previously exported with the 'full' option. In other words,
+       the folder structure should include the host object of the
+       database. You will have to specify the folder that contains the
+       'HDSconfig.mat' file of the previously exported data set.
+    
+       <p><tt>HDSEXPORT(OBJ, 'part')</tt> This will not include parent objects to the
+       exported structure. This is the most compact way of exporting the
+       database. In this case, the 'HDSconfig.mat' file that is normally
+       found in the topmost folder will be saved in the folder containing
+       OBJ.
+    
+       <p><tt>HDSEXPORT(OBJ, OPTION, 'className', 'className', ...)</tt> One can
+       specify one or more classes that further limit the number of
+       exported objects. Only the children objects of OBJ that belong to
+       the specified classes will be exported. OPTION should be one of the
+       previously specified options for the method ('full' 'add' or
+       'part').
+    
+       <p><tt>HDSEXPORT(OBJ, OPTION, 'className', INDECES, 'className', ...)</tt> To
+       even further limit the amount of exported objects, one can also
+       specify the indeces of the children objects of class 'className'
+       that should be included. You can specify this for multiple classes
+      similar to the previous example. 
+
+
+<a name="bse7fs0-1"></a>
+
+<h2>Examples</h2>       
+
+
+<h3>Example 1</h3>  
+           <p><tt>HDSEXPORT(Main.exp(3).trial(5))</tt><br>  
+               Exports all trial objects of the 3rd experiment and the
+               children objects of trial 5 (including subsequent objects).
+               It also exports the all experiment objects of Main and main
+               itself. 
+
+
+<h3>Example 2</h3>    
+           <p><tt>HDSEXPORT(Main.exp(3).trial(5), 'part')</tt><br>
+               Exports all trial objects of the 3rd experiment and all
+               children objects (including subsequent childdren) of trial
+               5. It does not export the parent objects of the trial
+               objects.
+    
+<h3>Example 3</h3>    
+       <p><tt>HDSEXPORT(Main.exp(3).trial(5), 'part', 'KinData','SpikeData')</tt><br>
+               Exports all trial objects of the 3rd experiment and all
+               KinData and SpikeData objects (and subsequent children)
+               linked in the 5th Trial object.
+
+<h3>Example 4</h3>       
+           <p><tt>HDSEXPORT(Main.exp(3), 'full', 'Trial', [1 4 5])</tt><br>
+               Exports all experiment objects of the Main object, all
+               Trial objects of the 3rd experiment and any objects linked
+               to the 1st, 4th and 5th Trial objects of the 3rd
+               experiment.
+    
+<h3>Example 5</h3>    
+           <p><tt>HDSEXPORT(Main.exp(1),'add')</tt> <br>
+               Adds the first experiment and all its children (including
+               subsequent children) to a previously exported data set.  
+
+<table class="feedbacklinkbot" border="0" width="100%" cellpadding="0" cellspacing="0"><tr><td>&nbsp;</td><td align="right"><script type="text/javascript" language="JavaScript">
+writeDocFeedbackSurveyLink();
+</script>&nbsp;
+</td></tr></table><p></p><table class="nav" summary="Navigation aid" border="0" width="100%" cellpadding="0" cellspacing="0"><tr valign="top"><td>&nbsp;</td></tr></table><br>
+
+  <p class="copy">&copy; 1984-2010 The MathWorks, Inc.
+       <tt class="minicdot">&#149;</tt> <a href="file:../../../license.txt">Terms of Use</a> <tt class="minicdot">&#149;</tt> <a href="file:../../../patents.txt">Patents</a> <tt class="minicdot">&#149;</tt> <a href="file:../../../trademarks.txt">Trademarks</a> <tt class="minicdot">&#149;</tt> <a href="file:../../../help/acknowledgments.html">Acknowledgments</a></p>
+
+</body>
+
+</html>

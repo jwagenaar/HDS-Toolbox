@@ -1,0 +1,231 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Product Overview </title>
+
+	<meta name="toctype" content="ug">
+	
+    <link rel="stylesheet" href="docstyle.css" type="text/css">
+
+  </head>
+
+<body>
+	<a name="top_of_page"></a>
+	<p style="font-size:1px;">&nbsp;</p>
+
+	<h1 class="title">Product Overview</h1>
+    
+	<hr>
+
+	<table border="0" cellpadding="4" cellspacing="0" class="pagenavtable">
+		<tr><th>On this page&#8230;</th></tr>
+		<tr><td>
+			<p><a href="HDS_Overview.html#prodOv1">HDS Terminology</a></p>
+			<p><a href="HDS_Overview.html#prodOv2">HDS Class Definitions</a></p>
+			<p><a href="HDS_Overview.html#prodOv3">HDS Methods</a></p>
+			<p><a href="HDS_Overview.html#prodOv4">HDS Subclass Definitions</a></p>
+			<p><a href="HDS_Overview.html#prodOv5">HDS Object Indicators</a></p>
+			</td>
+		</tr>
+    </table>
+
+    <br>
+    <a name="prodOv1"></a><h3 class="title" id="prodOv1">HDS Terminology</h3>
+    
+ 	<br>
+	<table width="600" border="0" cellspacing="0" cellpadding="1" bgcolor="#D7D7D7" style="margin-left:20px;">
+		<tr><td>
+			<table width="100%" border="0" cellspacing="1" cellpadding="3" bgcolor="#D7D7D7">
+            	<tr> 
+                	<th bgcolor="#C7C7C7" width="30%" align="left">Term</th>
+                	<th bgcolor="#C7C7C7" width="70%" align="left">Description</th>
+              	</tr>
+	      		<tr><td bgcolor="#FFFFFF" valign="top" width="30%"> <p align="left"><b>HDS object</b></p></td>
+                	<td bgcolor="#FFFFFF" width="70%" valign="top"> <p> An instance of any subclass of the HDS class definition.</p></td>
+	      		</tr>
+				<tr><td bgcolor="#FFFFFF" valign="top" width="30%"> <p align="left"><b>Dynamic property</b></p></td>
+					<td bgcolor="#FFFFFF" width="70%" valign="top"> <p>Property that is dynamically added to an object using the ADDOBJ method.</p></td>
+	      		</tr>
+	      		<tr><td bgcolor="#FFFFFF" valign="top" width="30%"> <p align="left"><b>Persistent object</b></p></td>
+					<td bgcolor="#FFFFFF" width="70%" valign="top"> <p>Object that is stored on the disk.</p></td>
+	      		</tr>
+				<tr><td bgcolor="#FFFFFF" valign="top" width="30%"> <p align="left"><b>Class method</b></p></td>
+					<td bgcolor="#FFFFFF" width="70%" valign="top"> <p>A method/function that belongs to a certain class. This includes all methods that have an HDS object as the first input argument and are located in the class definition folder on disk. </p></td>
+	      		</tr>
+			</table>
+	  	</td></tr>
+   </table>
+   
+	<br>
+	
+	<a name="prodOv2"></a><h3 class="title" id="prodOv2">HDS Class Definitions</h3>
+	<p>The HDS Toolbox contains two class definitions: </p>   
+	<br>
+	<table width="600" border="0" cellspacing="0" cellpadding="1" bgcolor="#D7D7D7" style="margin-left:20px;">
+        <tr><td>
+			<table width="100%" border="0" cellspacing="1" cellpadding="2" bgcolor="#D7D7D7">
+				<tr> 
+                	<th bgcolor="#C7C7C7" width="30%" align="left">Classes</th>
+                	<th bgcolor="#C7C7C7" width="70%" align="left">Description</th>
+              	</tr>
+	      		<tr><td bgcolor="#FFFFFF" valign="top" width="20%"> <p align="left"><b>HDS</b></p></td>
+                	<td bgcolor="#FFFFFF" width="80%" valign="top"> <p>This is the main class definition of the HDS Toolbox and serves as a superclass for all user defined HDS class definitions. The HDS_main class definition controls the access to the objects and the correct storage of the objects on disk. It also provides numerous methods that support the use of the HDS Toolbox.</p></td>
+	      		</tr>
+	      		<tr><td bgcolor="#FFFFFF" valign="top" width="20%"> <p align="left"><b>HDSTemplate</b></p></td>
+					<td bgcolor="#FFFFFF" width="80%" valign="top"> <p>The HDSTemplate can be used as a template for creating custom subclasses to define HDS objects. It contains the minimal set of properties that are required for any HDS subclass and provides examples for the optional methods that are described below.</p></td>
+	      		</tr>
+			</table>
+		</td></tr>
+	</table>
+
+
+   <br>
+	<a name="prodOv4"></a><h3 class="title" id="prodOv4">HDS Subclass Definitions</h3>
+    <p>HDS subclass definitions should be constructed to form a hierarchical object structure. The 'HDS_Template' class definition can be used as a template for correct construction of the subclasses. There are a couple of criteria that the HDS subclasses have to meet to be correctly defined.</p>
+
+    <p>First, the header syntax should indicate that the class definition is a subclass of HDS.</p>
+    <p class="code"><tt> classdef foo < HDS </tt></p>
+    <p>HDS itself is a subclass of Matlab's 'handle' and 'dynamicprops' classes (see Matlab help). The 'handle' class defines each HDS-object as a handle. This has many advantages and is explained in a later section. The 'dynamicprops' class enable the user to dynamically add properties to the HDS-objects. </p>
+	
+	<p>Secondly, there are a couple of constants that need to be set in each HDS subclass. These constants define the relation of objects of that class to other HDS objects and define the way that the object is saved and behaves. They are:</p>
+
+   <br>
+   <table width="600" border="0" cellspacing="0" cellpadding="1" bgcolor="#D7D7D7" style="margin-left:20px;">
+        <tr> 
+          <td> 
+            <table width="100%" border="0" cellspacing="1" cellpadding="2" bgcolor="#D7D7D7">
+              <tr> 
+                <th bgcolor="#C7C7C7" width="30%" align="left">Constants</th>
+                <th bgcolor="#C7C7C7" width="70%" align="left">Description</th>
+              </tr>
+             
+	      <tr> 
+                <td bgcolor="#FFFFFF" valign="top" width="30%"> <p align="left"><b>listAs</b></p></td>
+                <td bgcolor="#FFFFFF" width="70%" valign="top"> <p>String indicating the default property name to which the object is added in the parent object. This can be overridden by the ADDOBJ method if another property name is supplied.</p></td>
+              </tr>
+	      
+	      <tr> 
+		<td bgcolor="#FFFFFF" valign="top" width="20%"> <p align="left"><b>classVersion</b></p></td>
+                <td bgcolor="#FFFFFF" width="80%" valign="top"> <p>Version Number of this class definition. Version number should be increased when the class is changed in a way that previously saved objects are not loaded correctly anymore. See the topic on updating class definitions for more info.</p></td>
+              </tr>
+
+	      <tr> 
+		<td bgcolor="#FFFFFF" valign="top" width="20%"> <p align="left"><b>childClasses</b></p></td>
+                <td bgcolor="#FFFFFF" width="80%" valign="top"> <p>This should be a cell array of strings matching the Class names of objects that can be defined as children of this class. Objects of these classes can be added to the current class using the ADDOBJ method.</p></td>
+              </tr>
+	      
+	      <tr> 
+		<td bgcolor="#FFFFFF" valign="top" width="20%"> <p align="left"><b>parentClasses</b></p></td>
+                <td bgcolor="#FFFFFF" width="80%" valign="top"> <p>This should be a cell array of strings matching the Class names of objects that can be defined as parents of this class. This and the 'childclasses' constant determine the hierarchy of the database.</p></td>
+              </tr>
+	      
+	      <tr> 
+		<td bgcolor="#FFFFFF" valign="top" width="20%"> <p align="left"><b>metaProps</b></p></td>
+                <td bgcolor="#FFFFFF" width="80%" valign="top"> <p>This is a cell array of strings indicating the properties that are considered meta-data. Meta-data properties can be used in queries using the FINDOBJ method.</p></td>
+              </tr>
+	      <tr> 
+		<td bgcolor="#FFFFFF" valign="top" width="20%"> <p align="left"><b>dataProps</b></p></td>
+                <td bgcolor="#FFFFFF" width="80%" valign="top"> <p>This is a cell array of strings indicating the properties that contain 'raw' data. The contents of these properties are stored in separate files to maximize efficiency and minimize memory load. The properties listed in this method should be defined as 'Transient' in the class definition.</p></td>
+              </tr>
+	      <tr> 
+		<td bgcolor="#FFFFFF" valign="top" width="20%"> <p align="left"><b>propsWithUnits</b></p></td>
+                <td bgcolor="#FFFFFF" width="80%" valign="top"> <p>This is a cell array of strings indicating which properties have associated units. The units and dimension labels for those properties are defined in the next two constants.</p></td>
+              </tr>
+			<tr> 
+			<td bgcolor="#FFFFFF" valign="top" width="20%"> <p align="left"><b>propUnits</b></p></td>
+	                <td bgcolor="#FFFFFF" width="80%" valign="top"> <p>A cell array of strings indicating the units for each of the properties listed in the previous constant. These units will be displayed inline with the contents of the property.</p></td>
+	              </tr>
+				<tr> 
+				<td bgcolor="#FFFFFF" valign="top" width="20%"> <p align="left"><b>propDims</b></p></td>
+		                <td bgcolor="#FFFFFF" width="80%" valign="top"> <p>A cell array containing labels for each of the dimensions of the properties listed in the 'propsWithUnits' constant. Each index can either contain a string with a label when the contents of the property has one dimension, or a cell array with strings when the contents of the property contain multiple dimensions.</p></td>
+		              </tr>
+					<tr> 
+					<td bgcolor="#FFFFFF" valign="top" width="20%"> <p align="left"><b>strIndexProp</b></p></td>
+			                <td bgcolor="#FFFFFF" width="80%" valign="top"> <p>The name of a property of which the contents can be used to index into an array of objects. The specified property can only contain values of the class 'char'. </p></td>
+			              </tr>
+            </table>
+          </td>
+        </tr>
+
+      </table>
+
+   <br>
+     
+    <p> Finally, there is an optional method which, if defined, interacts with the HDS class definition. 
+    </p>
+
+   <br>
+   
+	<table width="600" border="0" cellspacing="0" cellpadding="1" bgcolor="#D7D7D7" style="margin-left:20px;">
+		<tr><td> 
+			<table width="100%" border="0" cellspacing="1" cellpadding="2" bgcolor="#D7D7D7">
+				<tr> 
+					<th bgcolor="#C7C7C7" width="20%" align="left">Methods</th>
+					<th bgcolor="#C7C7C7" width="80%" align="left">Description</th>
+ 				</tr>
+				<tr><td bgcolor="#FFFFFF" valign="top" width="20%"> <p align="left"><b>updateobj</b></p></td>
+					<td bgcolor="#FFFFFF" width="80%" valign="top"> <p>Each subclass of the HDS Toolbox can implement this method. It is automatically called when objects of the specific class are loaded from disk and the version of the saved object does not correspond with the current class version. </p></td>
+				</tr>
+ 			</table>
+		</td></tr>
+	</table>
+
+    <br>
+    <a name="prodOv1"></a><h3 class="title" id="prodOv5">HDS Object Indicators</h3>
+    <p>Object indicators are displayed in the right upper corner when the object is displayed in the command window and show some basic information about the state of the object. </p>
+ <br>
+   <table width="600" border="0" cellspacing="0" cellpadding="1" bgcolor="#D7D7D7" style="margin-left:20px;">
+        <tr> 
+          <td> 
+            <table width="100%" border="0" cellspacing="1" cellpadding="3" bgcolor="#D7D7D7">
+               <tr> 
+                <th bgcolor="#C7C7C7" width="20%" align="left">Indicator</th>
+                <th bgcolor="#C7C7C7" width="80%" align="left">Description</th>
+              </tr>
+	      <tr>
+		<td bgcolor="#FFFFFF" valign="top" width="20%"> <p align="left"><b><tt> * </tt></b></p></td>
+                <td bgcolor="#FFFFFF" width="80%" valign="top"> <p> Object has not been saved to disk or changes have been made to the object since it has been loaded from disk.</p></td>
+	      </tr>
+
+	      <tr>
+		<td bgcolor="#FFFFFF" valign="top" width="20%"> <p align="left"><b><tt>[T]</tt></b></p></td>
+		<td bgcolor="#FFFFFF" width="80%" valign="top"> <p>Displayed inline with a property that is defined as 'Transient'. The contents of these properties will not be saved to disk.</p></td>
+	      </tr>
+
+
+            </table>
+	  </td>
+	</tr>
+   </table>
+
+   <br><br>
+
+   <table class="nav" border="0" width="100%" cellpadding="0" cellspacing="0">
+     <tr valign="middle">
+       <td align="left" width="25">
+	 <a href="HDS_About.html"><img src="b_prev.gif" alt="About" border="0" vspace="0" width="17px" align="top"></a>&nbsp;</td>
+       <td align="left">About the HDS-Toolbox</td>
+       <td>&nbsp;</td>
+       <td align="right">Information for Developers</td>
+       <td align="right" width="25">
+	 <a href="HDS_DevRules.html"><img src="b_next.gif" border="0" align="bottom" alt="Development Rules"></a></td>
+     </tr>
+   </table>
+    
+   <br>
+
+
+   <table bgcolor="#336699" width="100%">
+    <tr><td height="1" bgcolor="#336699"><img src="pixelclear.gif" width="1" height="1" alt=''></td></tr>
+  </table>
+
+  <p class="copy">&copy; 2009-2011 J.B.M. Wagenaar
+    <tt>&#8226;</tt> <a href="file:../../../license.txt">Terms of Use</a> 
+    <tt>&#8226;</tt> <a href="file:../../../help/acknowledgments.html">Acknowledgments</a>
+  </p>
+
+  </body>
+
+</html>

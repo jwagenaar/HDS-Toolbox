@@ -1,0 +1,88 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+
+<html lang="en">
+
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  
+	<title>hdsupdate :: Functions (Hierarchical Data Storage Toolbox&#8482;)</title><link rel="stylesheet" href="docstyle.css" type="text/css"><meta 	name="generator" content="DocBook XSL Stylesheets V1.52.2"><meta name="chunktype" content="refpage">
+  
+	<meta http-equiv="Content-Script-Type" content="text/javascript"><meta name="toctype" content="fcn"><script language="JavaScript" 	src="docscripts.js"></script>
+
+<style>
+h1 {
+  color: #990000; 
+  font-size: 25;
+}
+
+</style></head>
+
+<body>
+
+<a name="top_of_page"></a>
+<p style="font-size:1px;">&nbsp;</p>
+<a name="f5-20226"></a>
+<a class="indexterm" name="zmw57dd0e14388"></a>
+<a class="indexterm" name="zmw57dd0e14392"></a>
+<a class="indexterm" name="zmw57dd0e14397"></a>
+
+<h1 class="reftitle">hdsupdate</h1><!-- SYNCHTO: f4-6010.html -->
+
+<p class="purpose">Updates search lookup tables for given data tree</p>
+
+<h2>Syntax</h2>
+
+<p class="synopsis"><tt>HDSUPDATE(OBJ)
+<br>HDSUPDATE(OBJ, 'all')</tt></p><a name="bse7fcb-1"></a>
+
+
+<h2>Description</h2>
+
+       <p><tt>HDSUPDATE(OBJ)</tt> Updates all search tables for the data tree
+       associated with <tt>OBJ</tt>. Only changes to the data are updated.
+    
+       <p><tt>HDSUPDATE(OBJ, 'all')</tt> Update all meta data including files that
+       have not changed. This can potentially take a long time as it will
+       browse through the entire database.
+    
+       <p>The <tt>HDSUPDATE</tt> method will generate an error report on the errors
+       encountered while updating the search tables. The error report can
+       be found in the 'HDSsearch' folder which is located at the root of
+       the data tree.
+    
+       <p>In case an error is encountered, the <tt>HDSUPDATE</tt> method resolves this
+       in the following matter:
+       
+
+	<p class="synopsis">1) Incorrect class: The values in the property do not match the
+       class of the initial value of the property as specified in the
+       class definition. The exception is resolved by: ('boolean': false),
+       ('numeric': NaN), ('char': '').</p>
+    
+       <p class="synopsis">2) Incorrect size: The values in the property do not have the
+       correct dimensions. For 'booleans' and 'numeric' classes, the
+       property should contain a single value. For 'char' the property
+       should contain a 1xn char array. The exception is resolved by:
+       ('boolean': first value in property), ('numeric': NaN), 
+       ('char': '').</p>
+    
+       <p class="synopsis">3) Empty index: The property is empty. No value is present in the
+       property. The exception is resolved by: ('numeric': NaN), 
+       ('char': '').</p>
+
+
+<a name="bse7fs0-1"></a>
+
+<table class="feedbacklinkbot" border="0" width="100%" cellpadding="0" cellspacing="0"><tr><td>&nbsp;</td><td align="right"><script type="text/javascript" language="JavaScript">
+writeDocFeedbackSurveyLink();
+</script>&nbsp;
+</td></tr></table><p></p><table class="nav" summary="Navigation aid" border="0" width="100%" cellpadding="0" cellspacing="0"><tr valign="top"><td>&nbsp;</td></tr></table><br>
+
+  <p class="copy">&copy; 1984-2010 The MathWorks, Inc.
+       <tt class="minicdot">&#149;</tt> <a href="file:../../../license.txt">Terms of Use</a> <tt class="minicdot">&#149;</tt> <a href="file:../../../patents.txt">Patents</a> <tt class="minicdot">&#149;</tt> <a href="file:../../../trademarks.txt">Trademarks</a> <tt class="minicdot">&#149;</tt> <a href="file:../../../help/acknowledgments.html">Acknowledgments</a></p>
+
+</body>
+
+</html>

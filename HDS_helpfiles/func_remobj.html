@@ -1,0 +1,101 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+
+<html lang="en">
+
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  
+	<title>remobj :: Functions (Hierarchical Data Storage Toolbox&#8482;)</title><link rel="stylesheet" href="docstyle.css" type="text/css"><meta 	name="generator" content="DocBook XSL Stylesheets V1.52.2"><meta name="chunktype" content="refpage">
+  
+	<meta http-equiv="Content-Script-Type" content="text/javascript"><meta name="toctype" content="fcn"><script language="JavaScript" 	src="docscripts.js"></script>
+
+<style>
+h1 {
+  color: #990000; 
+  font-size: 25;
+}
+
+</style></head>
+
+<body>
+
+<a name="top_of_page"></a>
+<p style="font-size:1px;">&nbsp;</p>
+<a name="f5-20226"></a>
+<a class="indexterm" name="zmw57dd0e14388"></a>
+<a class="indexterm" name="zmw57dd0e14392"></a>
+<a class="indexterm" name="zmw57dd0e14397"></a>
+
+<h1 class="reftitle">remobj</h1><!-- SYNCHTO: f4-6010.html -->
+
+<p class="purpose">Removes a linked object from the object</p>
+
+<h2>Syntax</h2>
+
+<p class="synopsis"><tt>OBJ = REMOBJ(OBJ, 'classname')
+<br>OBJ = REMOBJ(OBJ, 'className', INDEX)</tt></p><a name="bse7fcb-1"></a>
+
+
+
+<h2>Description</h2>
+
+       <p><tt>OBJ = REMOBJ(OBJ, 'classname')</tt> removes the last entry of the property
+       with objects of type 'classname' in the current object.  
+    
+       <p><tt>OBJ = REMOBJ(OBJ, 'className', INDEX)</tt> removes the object at the INDEX
+       from the property with objects of type 'className' in the current
+       object. 
+
+<a name="bse7fs0-1"></a>
+      
+<h3>Example</h3>       
+      
+           <p><tt>A = Animal;</tt> 
+           <br><tt>addobj(A,'Experiment','name');</tt> 
+           <br><tt>remobj(A,'exp');</tt>
+   
+<h3>Technical specs</h3>
+
+     <p>1. <tt>REMOBJ</tt> can only be called on a single object. 
+    
+     <p>2. <tt>REMOBJ</tt> registers the object if the object has not been registered
+     before.
+    
+     <p>3. <tt>REMOBJ</tt> finds name of property from which to remove and loads all
+     objects of that property.
+     
+     <p>4. <tt>REMOBJ</tt> gets the objIDS of the objects that should be removed and find
+     the indeces of those objects in <tt>HDSManagedData</tt>.
+    
+     <p>5. <tt>REMOBJ</tt> changes the indeces of the remaining objects in <tt>HDSManagedData</tt>.
+    
+     <p>6. <tt>REMOBJ</tt> sets the remIds in <tt>HDSManagedData</tt>.
+    
+     <p>7. <tt>REMOBJ</tt> marks all touched objects as changed to correctly save the
+     data.
+    
+     <p>8. <tt>REMOBJ</tt> removes objIds from childIds in object, removes the objIds from
+     <tt>HDSManagedData</tt> and deletes the objects that are removed.
+    
+     <p>9. <tt>REMOBJ</tt> removes all the child-objects of the removed object from
+     memory.
+    
+     <p>10. <tt>REMOBJ</tt> removes all the fileIds from <tt>HDSManagedData</tt> that are no longer
+     used, reorders the remainng fileIds and reassigns fileIDs to the objects
+     in memory.
+    
+     <p>11. <tt>REMOBJ</tt> resorts the objIds in <tt>HDSManagedData</tt>.
+
+<table class="feedbacklinkbot" border="0" width="100%" cellpadding="0" cellspacing="0"><tr><td>&nbsp;</td><td align="right"><script type="text/javascript" language="JavaScript">
+writeDocFeedbackSurveyLink();
+</script>&nbsp;
+</td></tr></table><p></p><table class="nav" summary="Navigation aid" border="0" width="100%" cellpadding="0" cellspacing="0"><tr valign="top"><td>&nbsp;</td></tr></table><br>
+
+  <p class="copy">&copy; 1984-2010 The MathWorks, Inc.
+       <tt class="minicdot">&#149;</tt> <a href="file:../../../license.txt">Terms of Use</a> <tt class="minicdot">&#149;</tt> <a href="file:../../../patents.txt">Patents</a> <tt class="minicdot">&#149;</tt> <a href="file:../../../trademarks.txt">Trademarks</a> <tt class="minicdot">&#149;</tt> <a href="file:../../../help/acknowledgments.html">Acknowledgments</a></p>
+
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>evalfr :: Functions (Control System Toolbox&#8482;)</title>
+  <link rel="stylesheet" href="../docstyle.css" type="text/css">
+  <meta name="generator" content="DocBook XSL Stylesheets V1.52.2">
+  <meta name="chunktype" content="refpage">
+  <meta http-equiv="Content-Script-Type" content="text/javascript">
+  <meta name="toctype" content="fcn">
+  <script language="JavaScript" src="docscripts.js"></script>
+</head>
+
+<body><a name="top_of_page"></a>
+  <p style="font-size:1px;">&nbsp;</p>
+
+
+
+  <a name="f1-225199"></a><a class="indexterm" name="zmw57dd0e8425"></a>
+  <h1 class="reftitle">evalfr</h1><!-- SYNCHTO: f2-1014412.html -->
+  <p class="purpose">Evaluate frequency response at given frequency</p>
+  
+  <a name="f1-208073"></a><h2>Syntax</h2>
+  <p class="synopsis"><tt>frsp = evalfr(sys,f) <br></tt></p>
+
+  <a name="f1-208075"></a><h2>Description</h2>
+  <p><tt><a name="f1-208076"></a>frsp = evalfr(sys,f) </tt>  evaluates the transfer function of the TF, SS, or ZPK model <tt>sys</tt> at the complex number <tt>f</tt>. For state-space models with data  (<i>A</i>,&nbsp;<i>B</i>,&nbsp;<i>C</i>,&nbsp;<i>D</i>), the result is</p><p class="programlistingindent"><i>H</i>(<i>f</i>)&nbsp;=&nbsp;<i>D</i>&nbsp;+&nbsp;<i>C </i>(<i>fI</i>&nbsp;&#8211;&nbsp;<i>A</i>)<sup>&#8211;1</sup><i>B</i></p><p><tt>evalfr</tt> is a simplified version of <tt>freqresp</tt> meant for quick evaluation of the response at a single point. Use <tt>freqresp</tt> to compute the frequency response over a set of frequencies.</p>
+
+  <a name="f1-229250"></a><h2>Example</h2>
+  <p>To evaluate the discrete-time transfer function</p><p class="programlistingindent"> <img src="eqn1253225035.gif" height="37" width="107" alt=""></p><p>at <i>z</i>&nbsp;=&nbsp;1&nbsp;+&nbsp;<i>j</i>, type</p>
+
+  <pre class="programlisting">H = tf([1 -1],[1 1 1],-1); z = 1+j; evalfr(H,z)</pre>
+
+  <p>to get the result:</p><pre class="programlisting">ans =  2.3077e-01 +  1.5385e-01i </pre><a name="f1-208079"></a><h2>Limitations</h2>
+  <p>The response is not finite when <tt>f</tt> is a pole of <tt>sys</tt>.</p>
+
+  <a name="f1-208081"></a><h2>See Also</h2>
+  <p><a href="bode.html"><tt>bode</tt></a>, <a href="freqresp.html"><tt>freqresp</tt></a>, <a href="sigma.html"><tt>sigma</tt></a></p>
+
+  <table class="feedbacklinkbot" border="0" width="100%" cellpadding="0" cellspacing="0">
+    <tr><td>&nbsp;</td><td align="right"><script type="text/javascript" language="JavaScript"> writeDocFeedbackSurveyLink(); </script>&nbsp;</td></tr>
+  </table>
+
+  <p></p>
+
+  <table class="nav" summary="Navigation aid" border="0" width="100%" cellpadding="0" cellspacing="0"><tr valign="top"><td>&nbsp;</td></tr></table><br>
+
+  <p class="copy">&copy; 1984-2009 The MathWorks, Inc.
+       <tt class="minicdot">&#149;</tt> <a href="file:../../../../license.txt">Terms of Use</a> <tt class="minicdot">&#149;</tt> <a href="file:../../../../patents.txt">Patents</a> <tt class="minicdot">&#149;</tt> <a href="file:../../../../trademarks.txt">Trademarks</a> <tt class="minicdot">&#149;</tt> <a href="file:../../../../help/acknowledgments.html">Acknowledgments</a></p>
+  <!-- Last updated: Fri Nov 20 13:44:59 EST 2009--></body></html>

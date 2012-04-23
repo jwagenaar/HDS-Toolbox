@@ -1,0 +1,96 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+
+<html lang="en">
+
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  
+	<title>addprop :: Functions (Hierarchical Data Storage Toolbox&#8482;)</title><link rel="stylesheet" href="docstyle.css" type="text/css"><meta 	name="generator" content="DocBook XSL Stylesheets V1.52.2"><meta name="chunktype" content="refpage">
+  
+	<meta http-equiv="Content-Script-Type" content="text/javascript"><meta name="toctype" content="fcn"><script language="JavaScript" 	src="docscripts.js"></script>
+
+<style>
+h1 {
+  color: #990000; 
+  font-size: 25;
+}
+
+</style></head>
+
+<body>
+
+<a name="top_of_page"></a>
+<p style="font-size:1px;">&nbsp;</p>
+<a name="f5-20226"></a>
+<a class="indexterm" name="zmw57dd0e14388"></a>
+<a class="indexterm" name="zmw57dd0e14392"></a>
+<a class="indexterm" name="zmw57dd0e14397"></a>
+
+<h1 class="reftitle">addprop</h1><!-- SYNCHTO: f4-6010.html -->
+
+<p class="purpose">Adds a dynamic property to the object</p>
+
+<h2>Syntax</h2>
+
+<p class="synopsis"><tt>OBJ = ADDPROP(OBJ, 'DynamicPropName')
+<br>OBJ = ADDPROP(... ,'-t')
+</tt></p><a name="bse7fcb-1"></a>
+
+
+
+<h2>Description</h2>
+
+       <p><tt>OBJ = ADDPROP(OBJ, 'DynamicPropName')</tt> adds a dynamic property to
+       the HDS-object OBJ.  The added property is associated only with the
+       current object, there is no effect on the class of OBJ.  
+    
+       <p><tt>OBJ = ADDPROP(... ,'-t')</tt> Optionally, the '-t' parameter can be
+       included as an input argument to specify that the added property
+       should be defined as a 'Transient' property. This means that the
+       property only exist as long as the object is in memory and will not
+       be stored to disk. 
+       
+<br><ul><a name="zmw57dd0e14495"></a>
+<table cellspacing="0" class="note" summary="Note" cellpadding="5" border="1">
+	<tr width="90%">
+		<td><p><b>Note:</b>&nbsp;&nbsp;
+
+
+       The <tt>HDSCLEANUP<tt> method will be able to remove the object
+       from memory which can result in the loss of data in added property
+       when it is defined as 'Transient'.   
+      
+</p></td></tr></table></ul>
+
+<h3>Examples</h3>       
+
+      
+   <p>E = Experiment; addprop(E, 'tempdata', '-t');
+  
+
+<h2>See Also</h2>
+
+<p>
+<a href="func_hdscleanup.html"><tt>hdscleanup</tt></a> |
+<a href="func_addobj.html"><tt>addobj</tt></a> | 
+<a href="func_remobj.html"><tt>remobj</tt></a> |
+<a href="func_addlink.html"><tt>addlink</tt></a> |
+<a href="func_remlink.html"><tt>remlink</tt></a> |
+<a href="func_remprop.html"><tt>remprop</tt></a>
+</p>
+   
+
+
+<table class="feedbacklinkbot" border="0" width="100%" cellpadding="0" cellspacing="0"><tr><td>&nbsp;</td><td align="right"><script type="text/javascript" language="JavaScript">
+writeDocFeedbackSurveyLink();
+</script>&nbsp;
+</td></tr></table><p></p><table class="nav" summary="Navigation aid" border="0" width="100%" cellpadding="0" cellspacing="0"><tr valign="top"><td>&nbsp;</td></tr></table><br>
+
+  <p class="copy">&copy; 1984-2010 The MathWorks, Inc.
+       <tt class="minicdot">&#149;</tt> <a href="file:../../../license.txt">Terms of Use</a> <tt class="minicdot">&#149;</tt> <a href="file:../../../patents.txt">Patents</a> <tt class="minicdot">&#149;</tt> <a href="file:../../../trademarks.txt">Trademarks</a> <tt class="minicdot">&#149;</tt> <a href="file:../../../help/acknowledgments.html">Acknowledgments</a></p>
+
+</body>
+
+</html>

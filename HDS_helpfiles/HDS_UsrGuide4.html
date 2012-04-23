@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Dynamic objects and properties</title>
+    <link rel="stylesheet" href="docstyle.css" type="text/css">
+
+  </head>
+
+<body>
+  <a name="top_of_page"></a>
+  <p style="font-size:1px;">&nbsp;</p>
+  <h1 class="title">Dynamic objects and properties</h1>
+  <hr>
+
+  <table border="0" cellpadding="4" cellspacing="0" class="pagenavtable">
+    <tr>
+      <th>On this page&#8230;</th></tr>
+    <tr><td>
+	<p><a href="HDS_UsrGuide3.html#sec1">Dynamic properties</a></p>
+	<p><a href="HDS_UsrGuide3.html#sec2">Adding and removing HDS objects </a></p>
+	<p><a href="HDS_UsrGuide3.html#sec3">Adding and removing properies</a></p>
+	<p><a href="HDS_UsrGuide3.html#sec4">Transient objects and properties</a></p>
+    </td></tr>
+  </table>
+  
+  <br>
+
+  <a name="sec1"></a><h3 class="title" id="sec1">Dynamic properties</h3>
+  <p>One of the core ideas behind the HDS Toolbox is that an object does not contain unnecessary information. Instead of preallocating all possible properties in an object, the user can add properties as needed. For example, during an experiment trial, we can record kinematics, force data, local field potential and many other data streams. However, if we would include those in all trial objects, each object would be cluttered with property names that are not used as we might only record a subset of the possible options. With the HDS Toolbox, the user only has to define in the class definition which object can be added but the user is not required to add all possible object types. This keeps the objects clean and managable.</p>
+
+  <p>There are two main methods to dynamically add properties to an object; <a href="methods/addobj.html">Addobj</a> and <a href="methods/addprop.html">Addprop</a> which are both discussed below. The last section of this page discussed 'Transient' objects/properties which are a special case of the previously mentioned option. </p>
+
+  <a name="sec2"></a><h3 class="title" id="sec2">Adding and removing HDS Objects</h3>
+
+  <p>Adding a HDS object to another HDS object will enable the user to index from one to the other using the '.'-notation. The user has to specify in the class-definition which classes can be added to an object of a particular class. (obj.dynamicVars) </p>
+
+  <a name="sec3"></a><h3 class="title" id="sec3">Adding and removing properties</h3>
+
+  <a name="sec4"></a><h3 class="title" id="sec4">Transient objects and properties</h3>
+
+
+   <br><br>
+
+   <table class="nav" border="0" width="100%" cellpadding="0" cellspacing="0">
+     <tr valign="middle">
+       <td align="left" width="25">
+	 <a href="HDS_About.html"><img src="b_prev.gif" alt="About" border="0" vspace="0" width="17px" align="top"></a>&nbsp;</td>
+       <td align="left">About the HDS-Toolbox</td>
+       <td>&nbsp;</td>
+       <td align="right">Example 1</td>
+       <td align="right" width="25">
+	 <a href="HDS_Overview.html"><img src="b_next.gif" border="0" align="bottom" alt="Product Overview"></a></td>
+     </tr>
+   </table>
+    
+   <br>
+
+
+   <table bgcolor="#336699" width="100%">
+    <tr><td height="1" bgcolor="#336699"><img src="pixelclear.gif" width="1" height="1" alt=''></td></tr>
+  </table>
+
+  <p class="copy">&copy; 2009-2010 J.B.M. Wagenaar
+    <tt>&#8226;</tt> <a href="file:../../../license.txt">Terms of Use</a> 
+    <tt>&#8226;</tt> <a href="file:../../../help/acknowledgments.html">Acknowledgments</a>
+  </p>
+
+  </body>
+
+</html>

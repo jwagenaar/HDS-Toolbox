@@ -1,0 +1,67 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+
+<html lang="en">
+
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  
+	<title>HDS :: Functions (Hierarchical Data Storage Toolbox&#8482;)</title><link rel="stylesheet" href="docstyle.css" type="text/css"><meta 	name="generator" content="DocBook XSL Stylesheets V1.52.2"><meta name="chunktype" content="refpage">
+  
+	<meta http-equiv="Content-Script-Type" content="text/javascript"><meta name="toctype" content="fcn"><script language="JavaScript" 	src="docscripts.js"></script>
+
+<style>
+h1 {
+  color: #990000; 
+  font-size: 25;
+}
+
+</style></head>
+
+<body>
+
+<a name="top_of_page"></a>
+<p style="font-size:1px;">&nbsp;</p>
+<a name="f5-20226"></a>
+<a class="indexterm" name="zmw57dd0e14388"></a>
+<a class="indexterm" name="zmw57dd0e14392"></a>
+<a class="indexterm" name="zmw57dd0e14397"></a>
+
+<h1 class="reftitle">HDS</h1>
+
+<p class="purpose">Abstract class definition for <tt>HDS Toolbox</tt></p>
+
+
+<h2>Description</h2>
+
+      
+       <p><tt>HDS</tt> is an abstract class definition which serves as the backbone
+       for the <tt>HDS Toolbox</tt>. Derived subclasses should be defined as
+       necessary to accomodate the structure of the desired database. When
+       defining the subclasses, it is required to implement the
+       properties: <tt>"listAs", "classVersion", "childClasses",
+       "parentClasses", "metaProps", "dataProps", "propsWithUnits",
+       "propUnits", "propDims", and "strIndexProp"</tt>. These properties
+       define the underlying structure of the data and internal structure
+       of an object.
+     
+       <p>The <tt>HDS Toolbox</tt> is designed to be a very general and multipurpose
+       data structuring tool. The core functionality is to mimic the
+       MATLAB-STRUCT behavior while using a distributed file structure for
+       storage of the data. 
+
+
+<a name="bse7fs0-1"></a>
+
+<table class="feedbacklinkbot" border="0" width="100%" cellpadding="0" cellspacing="0"><tr><td>&nbsp;</td><td align="right"><script type="text/javascript" language="JavaScript">
+writeDocFeedbackSurveyLink();
+</script>&nbsp;
+</td></tr></table><p></p><table class="nav" summary="Navigation aid" border="0" width="100%" cellpadding="0" cellspacing="0"><tr valign="top"><td>&nbsp;</td></tr></table><br>
+
+  <p class="copy">&copy; 1984-2010 The MathWorks, Inc.
+       <tt class="minicdot">&#149;</tt> <a href="file:../../../license.txt">Terms of Use</a> <tt class="minicdot">&#149;</tt> <a href="file:../../../patents.txt">Patents</a> <tt class="minicdot">&#149;</tt> <a href="file:../../../trademarks.txt">Trademarks</a> <tt class="minicdot">&#149;</tt> <a href="file:../../../help/acknowledgments.html">Acknowledgments</a></p>
+
+</body>
+
+</html>

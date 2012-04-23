@@ -1,0 +1,92 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+
+<html lang="en">
+
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  
+	<title>sortprop :: Functions (Hierarchical Data Storage Toolbox&#8482;)</title><link rel="stylesheet" href="docstyle.css" type="text/css"><meta 	name="generator" content="DocBook XSL Stylesheets V1.52.2"><meta name="chunktype" content="refpage">
+  
+	<meta http-equiv="Content-Script-Type" content="text/javascript"><meta name="toctype" content="fcn"><script language="JavaScript" 	src="docscripts.js"></script>
+
+<style>
+h1 {
+  color: #990000; 
+  font-size: 25;
+}
+
+</style></head>
+
+<body>
+
+<a name="top_of_page"></a>
+<p style="font-size:1px;">&nbsp;</p>
+
+<a name="bse7fcb"></a>
+<h1 class="reftitle">sortprop</h1><!-- SYNCHTO: f4-6010.html -->
+
+<p class="purpose">Sorts the objects of a property of the object</p>
+
+<h2>Syntax</h2>
+
+
+<p class="synopsis"><tt>OBJ = SORTPROP(OBJ, 'propName', NEWINDECES)
+<br>OBJ = SORTPROP(OBJ, 'propName', 'sortProperty')
+<br>OBJ = SORTPROP(OBJ, 'propName', 'sortProperty, '-noEmpty')
+</tt></p><a name="bse7fcb-1"></a>
+
+
+<h2>Description</h2>
+
+       <p><tt>OBJ = SORTPROP(OBJ, 'propName', NEWINDECES)</tt> reorganizes the
+       objects in the indicated property of object OBJ. The
+       objects are resorted such that: NEW = OLD(NEWINDECES). 
+    
+       <p><tt>OBJ = SORTPROP(OBJ, 'propName', 'sortProperty')</tt> can be used to
+       align the index of the sorted object in the OBJ property 'propName'
+       with a numeric value in the sorted object. In case that the values
+       in the properties of the sorted objects are not consequent numbers,
+       the method will add empty objects in the unspecified locations.
+       This means that the total number of objects in the 'propName'
+       property of OBJ can be larger after calling this method. 
+    
+       <p><tt>OBJ = SORTPROP(OBJ, 'propName', 'sortProperty, '-noEmpty')</tt> the
+       '-noEmpty' parameter can be added to prevent the method from
+       addding empty objects in case the some indeces are not assigned.
+       The indeces will be assigned based on the values in the
+       'sorProperty' of the sorted objects where the object with the
+       lowest value will be assigned to the first index and the object
+       with the highest value will be assigned to the the last index. In
+       this case it is possible that the index of the object does not
+       align with the number in the 'sortProperty'.
+
+<a name="bse7fs0-1"></a>
+
+<h3>Examples</h3>
+
+	   <p><tt>sortprop(M.exp(3), 'trial', [4 3 2 1])</tt>
+               <br>Will reassign the indeces of the trial objects such that
+               the trial object that used to be at index 4 will now be
+               assigned to index 1.
+           <p><tt>sortprop(M.exp(3), 'trial', 'trialId')</tt>
+               <br>Will align the index of the trials in the experiment object
+               with the value of the trialId property in the trial
+               objects. 
+           <p><tt>sortprop(M.exp(3), 'trial', 'trialId', '-noEmpty')</tt> 
+               <br>Will sort the 'trial' objects in the experiment object
+               based on the values in the 'trialId' property of the trial
+               objects. 
+
+<table class="feedbacklinkbot" border="0" width="100%" cellpadding="0" cellspacing="0"><tr><td>&nbsp;</td><td align="right"><script type="text/javascript" language="JavaScript">
+writeDocFeedbackSurveyLink();
+</script>&nbsp;
+</td></tr></table><p></p><table class="nav" summary="Navigation aid" border="0" width="100%" cellpadding="0" cellspacing="0"><tr valign="top"><td>&nbsp;</td></tr></table><br>
+
+  <p class="copy">&copy; 1984-2010 The MathWorks, Inc.
+       <tt class="minicdot">&#149;</tt> <a href="file:../../../license.txt">Terms of Use</a> <tt class="minicdot">&#149;</tt> <a href="file:../../../patents.txt">Patents</a> <tt class="minicdot">&#149;</tt> <a href="file:../../../trademarks.txt">Trademarks</a> <tt class="minicdot">&#149;</tt> <a href="file:../../../help/acknowledgments.html">Acknowledgments</a></p>
+
+</body>
+
+</html>

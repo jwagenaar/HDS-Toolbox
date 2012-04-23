@@ -1,0 +1,108 @@
+/* This css file is based on the standard docstyle.css used for MATLAB html help files. 
+   It is slightly adapted for use with the HDS Toolbox. */
+
+
+a:link {color: #0000FF;}
+a:active {color: #0000FF;}
+a:visited {color: #840084;}
+
+table.nav  {background-color: #E7EBF7;}
+table.note {background-color: #E7EBF7;}
+
+p {margin-top:0ex;}
+ul ul {list-style-type:square;}
+ul li p {margin-top:0ex; margin-bottom:.5ex; padding:0}
+li p.listimage {margin-top:.8ex; margin-bottom:1ex; padding:0}
+ol li p {margin-top:0ex; margin-bottom:.5ex; padding:0}
+
+/* chaptertitle */
+h1.title {color:black; font-size:4ex; margin-top:1ex; font-weight:bold}
+
+/* sect1 */
+h2.title {color:#990000; margin-top:1ex; margin-bottom:.9ex; font-weight:bold; font-size:3ex}
+
+/* sect2 */
+h3.title {color:#990000; margin-top:1ex; margin-bottom:.9ex; font-weight:bold; font-size:2.5ex}
+
+/* sect3 */
+h4.title {color:#990000; margin-top:1ex; margin-bottom:.9ex; font-weight:bold; font-size:2ex}
+
+/* refsect1 */
+h2 {color:#990000; margin-top:1ex; margin-bottom:.9ex; font-weight:bold; font-size:2.5ex}
+
+/* refsect2 */
+h3 {color:#990000; margin-top:1ex; margin-bottom:.9ex; font-weight:bold; font-size:2ex} 
+
+/* indentation for code */
+p.code {margin-left:3em;}
+p.code img  {margin:0px; border:1px solid #AAAAA;}
+
+/* indentation for graphics */
+p.graph {margin-left:3em;}
+p.graph img {margin:0px;  border-style:solid; border-width:1px; border-color:#AAAAAA; padding:10px 10px;}
+
+/* Match indentation for programlisting and graphic inside an example or informalexample */
+pre.programlisting {margin-left:32px;}
+p.synopsis {margin-left:32px;}
+pre.synopsis {margin-left:32px;}
+p.programlistingindent {margin-left:32px;}
+table.programlistingindent {margin-left:32px;}
+p.listprogramlistingindent {margin-left:32px; margin-top:.8ex; margin-bottom:1ex; padding:0;}
+
+/* Add more vertical space below simplelist if it has a following sibling.
+   Indent simplelists except in tables. */
+table.simplelist_nottable_notlast {margin-left:32px; margin-bottom:2ex;}
+table.simplelist_nottable_last {margin-left:32px;}
+table.simplelist_table_notlast {margin-left:-3px; margin-bottom:2ex;}
+table.simplelist_table_last {margin-left:-3px;}
+
+/* For tables of links appearing below the 'sect1', i.e. h2, heading at the top of each page */
+/* Based on datatable5 style from site4.css, used on the support main page */
+.pagenavtable th { background-color:#D7D7D7; border-bottom: 1px solid #878787; color:#000000; font-weight:bold; text-align:left; }
+.pagenavtable { border:1px solid #878787; margin-top:1.7ex; margin-bottom:.5ex; }
+.pagenavtable td { text-align:left; vertical-align:top;  padding:4px; }
+.pagenavtable td p{ line-height:1.2em; margin-top:.7ex; margin-bottom:.7ex;}
+p.pagenavlink { margin-top:2.2ex; margin-bottom:0; padding-top:0; padding-bottom:0; }
+a.pagenavimglink { text-decoration:none; }
+
+/* Vertical space in tables other than the header and footer banners */
+table.body {margin-top:2ex; margin-bottom:2ex;}
+
+/* Underline the keyboard accelerator. */
+span.accel {text-decoration:underline;}
+
+/* Underline for emphasis role=underline. */
+span.underline {text-decoration:underline;}
+
+/* Left-align table headers. <th> is centered by default. */
+th {text-align: left;}
+/* Permit overrides */
+th.center {text-align: center;}
+ 
+/* Make superscripts/subscripts smaller and further up/down. */
+sup {font-size: 75%; position:relative; top:-3px;}
+sub {font-size: 75%; position:relative; bottom:-3px;}
+
+p.copy { margin:0; }
+
+/* Permit color-coded text. */
+.blue {color:blue;}
+.red {color:red;}
+.green {color:green;}
+.violet {color:blueviolet;}
+.orange {color:orange;}
+.gray {color:#808080;}
+.brown {color:#CC9933;}
+.darkred {color:#CC0000;}
+.black {color:black;}
+
+/* Footer monospace */
+tt.minicdot {font-size: 1.6ex; }
+
+/* For WebRenderer, avoid shifting of next/previous buttons when page is short. */
+html { height: 101%; } 
+
+
+
+
+

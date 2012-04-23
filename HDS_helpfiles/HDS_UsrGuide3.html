@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Loading an saving data</title>
+    <link rel="stylesheet" href="docstyle.css" type="text/css">
+
+  </head>
+
+<body>
+  <a name="top_of_page"></a>
+  <p style="font-size:1px;">&nbsp;</p>
+  <h1 class="title">Loading and saving data</h1>
+  <hr>
+
+  <table border="0" cellpadding="4" cellspacing="0" class="pagenavtable">
+    <tr>
+      <th>On this page&#8230;</th></tr>
+    <tr><td>
+	<p><a href="HDS_UsrGuide3.html#sec1">HDS file-structure</a></p>
+	<p><a href="HDS_UsrGuide3.html#sec2">Loading data</a></p>
+	<p><a href="HDS_UsrGuide3.html#sec3">Saving data</a></p>
+	<p><a href="HDS_UsrGuide3.html#sec4">Creating local copies</a></p>
+    </td></tr>
+  </table>
+  
+  <br>
+
+  <a name="sec1"></a><h3 class="title" id="sec1">HDS file-structure</h3>
+  <p>The HDS Toolbox stores data accross multiple files in an organized folder structure. The structure is based on the hiarchy of the objects and their associates saving behavior. An object (or an array of objects) is stored in a '.mat' file. Any objects that are linked within this object are either stored in the same file or in a folder with the same name as the object file. For example, in the figure below, the 'Experiment' object 'a091809' contains multiple 'Trial' objects which in turn contain objects of class 'LFPData', 'SpikeData' and 'StimVar' data. The Experiment object also contains an 'Array' object which contains electrode information but does not contain any linked objects.</p> 
+
+  <p class="graph"><img width="700px" src="images/HDS_store.png"></p>
+
+
+  <a name="sec2"></a><h3 class="title" id="sec2">Loading data</h3>
+  <p>As the user requests various objects by indexing dynamic properties of an object, the HDS Toolbox loads the objects from file into memory. To access the first object in the tree, one should use the <a href="methods/HDSLoad.html">HDSLoad</a> method. This method loads and initializes the object for subsequent accessing of other objects. It is possible to load any HDS object using this method so it is not required to start with the topmost object of the complete dataset. During initialization, the path of the object will be stored in a hidden transient property "path". This means that the database can be accesed from any location because only the relative paths between the objects matter for correct functioning of the Toolbox.</p>
+
+  <p>It is possible to load anyy object using the standard 'open' function in Matlab or by double clicking it in the browser. However, this bypasses all initialization steps and greatly disencouraged.</p>
+
+  <p>Initialization occurs whenever the HDS Toolbox loads an object in memory; it involves a couple of steps which are visualized in the flowchart below. The object on disk is checked whether it complies with the latest class versions and updated if needed. Next, the path to the object is stored in the object and a pointer to the parent of the object is stored in the the object. These steps ensure that changes changes in the class definitions can be made without corrupting the saved data and relates the loaded object to the other objects in memory.</p>
+
+  <p>When class definitions are changes such that the object can no longer be loaded correctly, Matlab returns a structure which will subsequently be parsed as an object using the <a href="methods/Struct2Obj.html">Struct2Obj</a> method. This method tries to populate the object with the saved data. Any properties that cannot be parsed into an object will be stored in a transient property ('UNMATCHED_PROPS'). This can be the case if, for example, some properties are deleted from the classdefinition. The 'UNMATCHED_PROPS' property is transient which means that any information that is located in this property will be lost whenever the object is saved and reloaded. Use the update functions to handle these situations.</p>
+  <br>
+  <p class="graph"><img width="500px" src="images/Loadgraph.png"></p>
+
+  <a name="sec3"></a><h3 class="title" id="sec3">Saving data</h3>
+  <p>The <a href="methods/save.html">Save</a> method saves the object and all objects that are dynamically linked to the object. A <tt>[*]</tt> symbol indicates that the contents of an object have been changed. The HDS Toolbox automatically registers when changes have been made and only save the objects when necessary. The first time a data tree is saved, the user will be asked to specify a location for the database. See the <a href="methods/save.html">Save</a> method for detailed information. </p>
+
+   <a name="sec4"></a><h3 class="title" id="sec4">Creating local copies</h3>
+
+  <p>It is possible to copy part of the database to a different (local) location for analysis. This can be useful when the complete data tree is stored at a network storage drive and you only need the data for a particular experiment. In this case you can just copy the data of the one experiment and its linked classes to a local drive and access the data as if the experiment was the topmost object of the datatree. It is necessary to invoke the <a href="methods/declarehost">Declarehost</a> method to inform the HDS Toolbox of this change. </p><p>However, it is NOT possible to make changes to this local datatree and copy them back to the original data tree. Doing this will corrupt the data tree as the <a href="methods/declarehost">Declarehost</a> method changes the object-id numbers. </p>
+
+   <br><br>
+
+   <table class="nav" border="0" width="100%" cellpadding="0" cellspacing="0">
+     <tr valign="middle">
+       <td align="left" width="25">
+	 <a href="HDS_About.html"><img src="b_prev.gif" alt="About" border="0" vspace="0" width="17px" align="top"></a>&nbsp;</td>
+       <td align="left">About the HDS-Toolbox</td>
+       <td>&nbsp;</td>
+       <td align="right">Example 1</td>
+       <td align="right" width="25">
+	 <a href="HDS_Overview.html"><img src="b_next.gif" border="0" align="bottom" alt="Product Overview"></a></td>
+     </tr>
+   </table>
+    
+   <br>
+
+
+   <table bgcolor="#336699" width="100%">
+    <tr><td height="1" bgcolor="#336699"><img src="pixelclear.gif" width="1" height="1" alt=''></td></tr>
+  </table>
+
+  <p class="copy">&copy; 2009-2010 J.B.M. Wagenaar
+    <tt>&#8226;</tt> <a href="file:../../../license.txt">Terms of Use</a> 
+    <tt>&#8226;</tt> <a href="file:../../../help/acknowledgments.html">Acknowledgments</a>
+  </p>
+
+  </body>
+
+</html>
