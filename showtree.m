@@ -423,9 +423,9 @@ function defbuttons(cpHandle, tree)
     [arr, par] = findtree(arr, arr, 0, 0, tree.links);
     if size(arr,1)>1
         arr = arr( 1:find(arr(:,1),1,'last'),:);
-        arr = arr( :, 1:find(arr(size(arr,1),:),1,'last'));
+        arr = arr( :, 1:find(sum(arr,1),1,'last'));
         par = par( 1:find(par(:,1),1,'last'),:);
-        par = par( :, 1:find(par(size(par,1),:),1,'last'));
+        par = par( :, 1:find(sum(par,1),1,'last'));
     end
 
     A = {tree.classes.name};
