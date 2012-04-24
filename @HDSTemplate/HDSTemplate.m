@@ -43,6 +43,10 @@ classdef HDSTemplate < HDS
     %   which can be used for indexing instead of the numeric index (i.e.
     %   'experiment('02-2009').trial(4)'
     %
+    %   maskDisp : Cell array with strings that indicate properties that should
+    %   not be evaluated when the object is displayed. This can be useful if
+    %   you have dependent properties that take a while to return their content.
+    %
     %   -- -- --
     %
     %   
@@ -74,6 +78,7 @@ classdef HDSTemplate < HDS
         propUnits      = {'uV' 'Hz' }
         propDims       = { {'Channel' 'Time'} ''}
         strIndexProp   = 'name'
+        maskDisp       = {}
     end
     
     
