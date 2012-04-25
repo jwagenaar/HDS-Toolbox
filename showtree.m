@@ -372,7 +372,12 @@ function spacing = findspacing(spacing, row, col, arr, par, buttonSize, minSpace
           leftChildIdx = find(par(row+1,:)==leftParent, 1,'last');
           if ~isempty(leftChildIdx)
             leftChildSpace = spacing(row+1, leftChildIdx) + buttonSize(arr(row + 1,leftChildIdx),3)./2;
-            spacing(row,col) = leftChildSpace + sameDist + buttonSize(arr(row,col),3)/2;
+            
+            aux1 = leftChildSpace + sameDist + buttonSize(arr(row,col),3)/2;
+            aux2 = spacing(row,col-1) + buttonSize(arr(row,col-1),3)./2 + sameDist + buttonSize(arr(row,col),3)/2;
+            
+            spacing(row,col) = max([aux1 aux2]);
+            
           else
             spacing(row,col) = spacing(row,col-1) + buttonSize(arr(row,col-1),3)./2 + difDist + buttonSize(arr(row,col),3)/2;
           end   
