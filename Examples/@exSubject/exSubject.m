@@ -13,7 +13,7 @@ classdef exSubject < HDS
         
     
     % All constants used in the template are mandatory.
-    properties ( Constant )                 
+    properties ( Constant, Hidden )                 
         listAs         = 'subj'
         classVersion   = 1              
         childClasses   = {'exExperiment' 'exDiet'}                  
