@@ -1712,17 +1712,10 @@ classdef HDS < dynamicprops
 
       sIsSubs = s(iS).subs;
       treeId  = obj.treeNr;
-
-      % Find current object in HDSManagedData, sanity check.
-      objIdExists = any(HDSManagedData(treeId).objIds(1, :) == obj.objIds(1));
-      assert( (treeId && objIdExists) || (~treeId && ~objIdExists), ...
-        ['ERROR: Object has treeID and cannot be found in mem or '...
-        'has no treeID but is present in mem.']);
-      % --- --- 
-
+      
       % Register obj if not previously registered. 
       if ~obj.treeNr; [obj, treeId] = registerObjs(obj); end
-
+      
       % Get location of object with respect to the host object.
       HDSindex  = HDSManagedData(treeId).objIds(1, :) == obj.objIds(1);
       ids       = HDSManagedData(treeId).objIds(:, HDSindex);
@@ -1742,7 +1735,7 @@ classdef HDS < dynamicprops
       dataOption  = curOptions.dataMode;
       propId      = find(strcmp(sIsSubs, obj.dataProps),1);
 
-        % Get StrideMatrix if subindex provided.
+      % Get StrideMatrix if subindex provided.
       if length(s) > iS               
 
         if strcmp(s(iS+1).type,'()')
