@@ -1,4 +1,4 @@
-function HDSstopmonitor(obj, ~)
+function hdsstopmonitor(obj, ~)
     %HDSSTOPMONITOR  Stops the HDSMonitor
     %
     % This is the callback function for either:

@@ -65,7 +65,6 @@ classdef HDSTemplate < HDS
     end
     
     
-    
     % All constants used in the template are mandatory.
     properties ( Constant )                 
         listAs         = 'templ'
