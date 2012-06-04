@@ -409,8 +409,8 @@ function createdDummy = savehds(treeId, varargin)
           newParentIds = allParentIds(~ismembc(allParentIds, sort(NBStruct.parentIds)));
           
           NBStruct.parentIds    = [NBStruct.parentIds ; uint32(newParentIds)];
-          NBStruct.updateBools  = [NBStruct.updateBools ; ones(length(newParentIds),1,'uint32')];
-          NBStruct.nrChildPP    = [NBStruct.nrChildPP ; zeros(length(newParentIds),1,'uint32')];
+          NBStruct.updateBools  = [NBStruct.updateBools ; ones(1,length(newParentIds),'uint32')];
+          NBStruct.nrChildPP    = [NBStruct.nrChildPP ; zeros(1,length(newParentIds),'uint32')];
           NBStruct.nrParents    = length(NBStruct.parentIds);
             
           checkVec = false(length(objIdsFileFolderClass),1);
