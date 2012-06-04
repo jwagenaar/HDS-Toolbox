@@ -56,7 +56,7 @@ function obj = addlink(obj, propName, linkObjs)
       'contains linked objects of another class.'], upper(propName), upper(class(linkObjs)));
     assert(uint32(addClassId) == obj.linkPropIds(1,matchPropName), ...
       'Incorrect class; object of class %s cannot be added to property %s.',...
-      upper(addClassName), upper(propName));
+      upper(class(linkObjs)), upper(propName));
 
   else
     obj.linkProps = [obj.linkProps propName];
