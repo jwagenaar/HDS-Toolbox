@@ -39,20 +39,12 @@ function hdscopyright(varargin)
     end
       
     % Get Version from HDSToolbox_README.txt 
-    try
-      fid = fopen('README_HDS.txt');
-      str = '';
-      while ischar(str);
-        str = fgets(fid);
-        if strfind(lower(str), 'version')
-          break
-        end
-      end
-      fclose(fid);
-    catch ME %#ok<NASGU>
-      str = 'Version unknown.';
+    fid = fopen('README_HDS.txt');
+    str = '';
+    while str ~= -1
+      str = 
     end
-      
+    
     % -- -- -- -- -- Display message to user -- -- -- -- -- --
     
     if showMessage
@@ -60,15 +52,13 @@ function hdscopyright(varargin)
         %Currently no links, but could change in future.
         if usejava('desktop')
             HDS.displaymessage('-- -- -- -- -- --',2,'\n','');
-            fprintf('HIERARCHICAL DATA STORAGE TOOLBOX\n');
+            fprintf('HIERARCHICAL DATA STORAGE TOOLBOX v1.1.\n');
             fprintf('Copyright:  2009-2012 J.B. Wagenaar\n');
-            fprintf('%s',str);
             HDS.displaymessage('-- -- -- -- -- --',2,'','\n');
         else
             HDS.displaymessage('-- -- -- -- -- --',2,'\n','');
-            fprintf('HIERARCHICAL DATA STORAGE TOOLBOX\n');
+            fprintf('HIERARCHICAL DATA STORAGE TOOLBOX v1.1.\n');
             fprintf('Copyright:  2009-2012 J.B. Wagenaar\n');
-            fprintf('%s',str);
             HDS.displaymessage('-- -- -- -- -- --',2,'','\n');
         end
 

@@ -1,3 +1,11 @@
+-- -- -- -- HDS-Toolbox -- -- -- --
+--
+-- Copyright (C) 2012 J.B.Wagenaar
+--      All Rights Reserved.
+-- -- -- -- -- -- -- -- -- -- -- --
+Version: 2.1.1
+
+
 The HDS-Toolbox provides a means to access large amounts of 'scientific' data in a structured and intuitive way in Matlab. It aims to create datasets that are self-explanatory and tailored to the specific needs of the user by allowing the user to define the hierarchy of the objects. It provides a transparent alternative for people that currently store their scientific data in matlab-structures and offers many additional benefits which will be described in the remainder of this document.
 
 The toolbox does this by requiring the user to define their data as a set of linked classes which are hierarchically organized. Objects of these classes can be linked to each-other based on the relations defined in the class definitions. The class definitions separate 'meta-data' from 'raw-data' and assigns dimensions and units to data represented in the objects.
