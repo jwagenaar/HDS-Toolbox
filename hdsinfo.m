@@ -54,13 +54,14 @@ function varargout = hdsinfo()
     else
         % If no objects in memory, set option to 0
         if isempty(mem)
-            HDS.displaymessage('-- HDS Info -- --',2,'\n','');
+            str = sprintf('-- HDS Info -- %s --', 'HDS-EXTERNALDATA BRANCH');
+            HDS.displaymessage(str, 2, '\n','');
             fprintf(' - Number of data structures : %7.1d\n',length(HDSManagedData));
             HDS.displaymessage('-- -- -- -- -- --',2,'','\n');   
             
         else
-            
-            HDS.displaymessage('-- HDS Info -- --',2,'\n','');
+            str = sprintf('-- HDS Info -- %s --', 'HDS-EXTERNALDATA BRANCH');
+            HDS.displaymessage(str, 2, '\n','');
                         
             for i = 1: length(HDSManagedData)
                 if length(HDSManagedData)>1
