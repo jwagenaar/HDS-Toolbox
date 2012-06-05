@@ -56,7 +56,7 @@ classdef HDS < dynamicprops
     childClasses      % Cell array of strings with class-types of possible dynamic variables.
     parentClasses     % Cell array of strings with class-types of possible parent objects.
     metaProps         % Cell array of strings with property names that should be searchable.
-    dataProps         % Cell array of strings with property names that contain pure data.
+    dataProps         % Cell array of strings with property names that contain raw data or fileRepos objects.
     propsWithUnits    % Cell array of strings with property names that contain values with units.
     propUnits         % Cell array with strings indicating the units of the properties with units.
     propDims          % Cell array of cells with the names for the dimensions of the properties with units.
