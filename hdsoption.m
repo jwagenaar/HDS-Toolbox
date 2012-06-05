@@ -14,6 +14,7 @@ function out = hdsoption(varargin)
   %   'decimation'    : Vector with decimation values. 
   %   'loadLimit'     : Threshold limiting the size of loaded data.
   %   'maxNCFileSize' : Sets the maximum data file size in bytes.
+  %   'reposLocID'    : Sets the Location ID used for the repos objects.
   %   
   %   
   %   -- metaMode --
@@ -66,6 +67,13 @@ function out = hdsoption(varargin)
   %   loaded into memory. Subsequent data requests will check what subset
   %   is in memory and retrieve additional points if necessary.
   %
+  %   -- ReposLocID -- 
+  %
+  %   This string identifies the set of ReposIDs that are used to identify the
+  %   location of the raw file repositories. Depending on the computer where the
+  %   user is using, the set of repository root folders could differ. This
+  %   identifier sets which set of repository root are used.
+  %
   %   -- decimation -- (Not implemented yet)
   %   
   %   This option is only used when 'dataMode' == 2. The decimation
@@ -93,15 +101,26 @@ function out = hdsoption(varargin)
 
   try
     if isempty(options)
-      options = struct('decimation',1, 'metaMode',0, 'dataMode',1, 'maxNCFileSize',1e9,'loadLimit',1e5);
+      options = struct('decimation',1, ...
+        'metaMode',0, ...
+        'dataMode',1, ...
+        'maxNCFileSize',1e9, ...
+        'loadLimit',1e5, ...
+        'reposLocID','');
       mlock
     end
 
     if nargin
       if strcmp(varargin{1},'default')
         assert(length(varargin) ==1, ...
-          'HDS:HDSOPTION','HDSOPTION  Setting HDSOPTION to ''default'' values requires only one input.');
-        options = struct('decimation',1, 'metaMode',0, 'dataMode',1, 'maxNCFileSize',1e9,'loadLimit',1e5);
+          'HDS:HDSOPTION',['HDSOPTION  Setting HDSOPTION to ''default'' '...
+          'values requires only one input.']);
+        options = struct('decimation',1, ...
+          'metaMode',0, ...
+          'dataMode',1, ...
+          'maxNCFileSize',1e9,...
+          'loadLimit',1e5,...
+          'reposLocID','');
       end
     else
       out = options;
@@ -137,7 +156,11 @@ function out = hdsoption(varargin)
               'HDSOPTION: Incorrect value for ''loadLimit'' option.');
             options.loadLimit = varargin{ix+1};
             ix = ix+2;
-
+          case 'reposLocID'
+            assert(ischar(varargin{ix+1}) && length(varargin{ix+1})==1, ...
+              'HDSOPTION: Incorrect value for ''reposLocID'' option.');
+            options.reposLocID = varargin{ix+1};
+            ix = ix+2;
           case 'default'
             error('HDS:HDSOPTION',['HDSOPTION  Setting HDSOPTION to ''default'' '...
               'values requires only one input.']);

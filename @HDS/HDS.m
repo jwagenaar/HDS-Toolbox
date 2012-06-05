@@ -35,7 +35,8 @@ classdef HDS < dynamicprops
     linkPropIds   = zeros(2,0,'uint32')   % [classID isChildProp]
     linkLocs      = zeros(5,0,'uint32')   % Array with classIds of linked object and parent objects. 
     linkIds       = zeros(3,0,'uint32')   % [objId propId linkLoc] of all linked objects.
-    dPropSize     = zeros(2,3,'uint32')   % Array that describes data in dataprops when they are not loaded in mem.
+    dPropSize     = zeros(2,4,'uint32')   % Array that describes data in dataprops when they are not loaded in mem.
+    reposVec      = []                    % Array with repos objects (empty).
   end
 
   properties (SetAccess = private, Transient, Hidden)                      
@@ -102,7 +103,12 @@ classdef HDS < dynamicprops
       obj.objVersion  = [obj.HDSClassVersion obj.classVersion];
       obj.saveStatus  = uint32(1);
       obj.dataInMem   = zeros(length(obj.dataProps),3, 'uint32');
-      obj.dPropSize   = zeros(length(obj.dataProps),3, 'uint32');
+      obj.dPropSize   = zeros(length(obj.dataProps),4, 'uint32');
+      
+      if ~isempty(obj.dataProps)
+        aux(length(obj.dataProps)) = HDSFileRepos;
+        obj.reposVec = aux;
+      end
 
       % Check if the class definition is well defined if not
       % previously done. 
@@ -209,8 +215,14 @@ classdef HDS < dynamicprops
                 switch s(iS).subs
                   case obj.linkProps                                      
                     [obj, iS] = subsref_getLinks(obj, s, iS);
-                  case obj.dataProps                  
-                    [obj, iS] = subsref_getData(obj, s, iS);
+                  case obj.dataProps  
+                    ix = find(strcmp(s(iS).subs, obj.dataProps),1);
+                    if obj.dPropSize(ix,1)
+                      obj = getData(obj.reposVec(ix));
+                      iS = iS +1;
+                    else
+                      [obj, iS] = subsref_getData(obj, s, iS);
+                    end
                   case 'parent'                       
                     [obj, ~] = subsref_getParent(obj, [], iS);                 
                   otherwise   
@@ -470,7 +482,7 @@ classdef HDS < dynamicprops
 
         builtin('subsasgn', curObj, s(iS:end), val);
         ps = size(curObj.(s(iS).subs));
-        curObj.dPropSize(dataPropId,1:(1+length(ps))) = uint32([typeId ps]);
+        curObj.dPropSize(dataPropId,1:(2+length(ps))) = uint32([0 typeId ps]);
 
         % Set the memory vector to include all data.
         memVec = [ones(1,length(ps)) ; ps];
@@ -651,7 +663,7 @@ classdef HDS < dynamicprops
 
         % Set the dataInMem property
         dataPropLength = length(objs(ii).dataProps);
-        objs(ii).dataInMem = zeros(dataPropLength, 1+2*(size(objs(ii).dPropSize,2)-1), 'uint32');
+        objs(ii).dataInMem = zeros(dataPropLength, 1+2*(size(objs(ii).dPropSize,2)-2), 'uint32');
       end
       warning('ON','MATLAB:structOnObject');
 
@@ -740,7 +752,7 @@ classdef HDS < dynamicprops
               % Determine string from dPropSize.
               emptyStr = '[]';
               curdProp = obj.dPropSize(dProp,:);
-              switch curdProp(1)
+              switch curdProp(2)
                case 6
                   typeId = 'double';
                 case 5
@@ -1357,7 +1369,7 @@ classdef HDS < dynamicprops
         l = sum(obj.linkIds(2,:) == uint32(propId));
       elseif any(aux2)
         propId = find(aux2,1);
-        sizeVec = double(obj.dPropSize(propId, 2:end));
+        sizeVec = double(obj.dPropSize(propId, 3:end));
         l = max(sizeVec);
       else
         l = builtin('length', obj.(propname));
@@ -1382,7 +1394,7 @@ classdef HDS < dynamicprops
         s = [1 sum(obj.linkIds(2,:) == uint32(propId))];
       elseif any(aux2)
         propId = find(aux2,1);
-        sizeVec = double(obj.dPropSize(propId, 2:end));
+        sizeVec = double(obj.dPropSize(propId, 3:end));
         s = sizeVec(1:max([2 find(sizeVec,1,'last')]));
       else
         s = builtin('size', obj.(propname));
@@ -1742,7 +1754,7 @@ classdef HDS < dynamicprops
           subIndexData = true;
 
           % Get property size
-          sizeVec     = double(obj.dPropSize(propId, 2:end));
+          sizeVec     = double(obj.dPropSize(propId, 3:end));
           curPropSize = sizeVec(1 : find(sizeVec,1,'last')); 
 
           % Check the number of dimensons that are indexed.
@@ -1831,10 +1843,10 @@ classdef HDS < dynamicprops
       if ~isempty(obj.dataInMem)
         if obj.dataInMem(propId,1) > uint32(1) 
           dataOption = 3;
-        elseif obj.dPropSize(propId, 2) == uint32(0)
+        elseif obj.dPropSize(propId, 3) == uint32(0)
           dataOption = 4;
         end
-      elseif obj.dPropSize(propId, 2) == uint32(0)
+      elseif obj.dPropSize(propId, 3) == uint32(0)
         dataOption = 4;
       end
 
@@ -1886,7 +1898,7 @@ classdef HDS < dynamicprops
       switch dataOption               
         case 1 % Get and store in obj          
 
-          propSize = double(obj.dPropSize(propId,2:end));
+          propSize = double(obj.dPropSize(propId,3:end));
           propSize = propSize(1: find(propSize,1,'last'));
 
           % Depending on the loadLimit, define the subset of data or
@@ -2070,6 +2082,8 @@ classdef HDS < dynamicprops
     obj = remlink(obj, propName, varargin)
     obj = addprop(obj, propName, varargin)
     obj = remprop(obj, propName)
+    obj = addrepos(obj, propName, root, files, type, varargin)
+    
     classStr = propclass(obj, propname)
     obj = sortprop(obj, propName, sortOption, varargin)
     obj = renameprop(obj, oldName, newName)
@@ -2096,7 +2110,7 @@ classdef HDS < dynamicprops
       for iProp = 1: length(obj.dataProps)
           obj.(obj.dataProps{iProp}) = [];
       end
-      obj.dataInMem = zeros(length(obj.dataProps), 1+2*(size(obj.dPropSize,2)-1), 'uint32');
+      obj.dataInMem = zeros(length(obj.dataProps), 1+2*(size(obj.dPropSize,2)-2), 'uint32');
 
       warning('OFF','MATLAB:structOnObject');
       aux = struct(obj); %#ok<NASGU>
