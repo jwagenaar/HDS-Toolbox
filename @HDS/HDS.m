@@ -1117,7 +1117,7 @@ classdef HDS < dynamicprops
         end	
         fprintf('\n');
       else
-        Link2 = sprintf('<a href="matlab:methods(%s,''-hds'')">show more.</a>',class(obj));
+        Link2 = sprintf('<a href="matlab:methods(%s,''-all'')">show more.</a>',class(obj));
         fprintf(['\n + ' Link2 '\n\n']);
       end
     end
