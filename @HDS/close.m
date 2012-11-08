@@ -72,7 +72,7 @@ function varargout = close(obj, varargin)
       mirroredArray   = mainLoc(:,ones(size(flipArray,2),1));
       childLocs       =  find(~any(truncFlipArray - mirroredArray));
 
-      childIdx    = find(ismembc(HDSManagedData(treeId).objIds(4,:), childLocs));
+      childIdx    = find(ismembc(HDSManagedData(treeId).objIds(4,:), uint32(childLocs)));
       childIds    = HDSManagedData(treeId).objIds(:,childIdx);
       childBools  = HDSManagedData(treeId).objBools(:,childIdx);
 
