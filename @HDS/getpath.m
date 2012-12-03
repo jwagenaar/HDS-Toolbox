@@ -29,7 +29,7 @@ function [path, index] = getpath(obj)
 
   % Get location of object with respect to the host object.
   [ids, locId,~,~] = getobjlocation(obj);
-  locIdi = [ids(5) ; locId];
+  locIdi = [ids(1) ; locId];
 
   % Get location with respect to the basePath.
   curLoc = locIdi(end - (2*HDSManagedData(treeId).treeConst(4)):-1:1) ;
